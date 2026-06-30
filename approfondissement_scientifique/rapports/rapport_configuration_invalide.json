@@ -1,0 +1,42 @@
+{
+  "ok": false,
+  "contrat": {
+    "gamme": "Coveraccess",
+    "version_contrat": "1.0.0"
+  },
+  "resume": {
+    "nb_parametres": 5,
+    "nb_erreurs": 4,
+    "classes_detectees": {
+      "R3": 2,
+      "R4": 1,
+      "R2": 1
+    }
+  },
+  "erreurs": [
+    {
+      "parametre": "largeur",
+      "classe": "R3",
+      "passe": "configuration",
+      "message": "La valeur 2500 sort du domaine admis [300, 1600]."
+    },
+    {
+      "parametre": "hauteur",
+      "classe": "R4",
+      "passe": "configuration",
+      "message": "Le parametre obligatoire 'hauteur' est absent de la configuration transmise."
+    },
+    {
+      "parametre": "classement_feu",
+      "classe": "R3",
+      "passe": "configuration",
+      "message": "La valeur 'EI240' ne fait pas partie des valeurs autorisees : ['EI30', 'EI60', 'EI120']."
+    },
+    {
+      "parametre": "option_joint",
+      "classe": "R2",
+      "passe": "configuration",
+      "message": "La valeur 'true' (str) ne correspond pas au type attendu 'boolean'."
+    }
+  ]
+}

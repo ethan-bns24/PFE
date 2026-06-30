@@ -1,0 +1,31 @@
+\chapter*{Glossaire et abréviations}
+\addcontentsline{toc}{chapter}{Glossaire et abréviations}
+
+\renewcommand{\arraystretch}{1.2}
+\newcount\glossrow
+\glossrow=0
+\newcommand{\glossline}[2]{%
+  \advance\glossrow by 1
+  \ifodd\glossrow
+    \cellcolor{LightGrey!60}#1 & \cellcolor{LightGrey!60}#2 \\
+  \else
+    #1 & #2 \\
+  \fi}
+
+\begin{longtable}{>{\bfseries}p{0.18\textwidth}p{0.76\textwidth}}
+\glossline{SQL}{\textit{Structured Query Language}. Langage de manipulation et d'interrogation de bases de données relationnelles. Dans ce mémoire, il désigne à la fois la couche de données et les règles de configuration implémentées dans la base.}
+\glossline{CAO}{Conception assistée par ordinateur. Ensemble des outils de modélisation numérique utilisés pour concevoir et maintenir les produits industriels.}
+\glossline{R\&D}{Recherche et Développement. Service chargé de l'innovation, de la mise au point produit et de l'amélioration continue des solutions techniques.}
+\glossline{BIM}{\textit{Building Information Modeling}. Approche de modélisation numérique du bâtiment permettant de structurer, partager et exploiter des données tout au long du cycle de vie d'un ouvrage.}
+\glossline{PV feu}{Procès-verbal de résistance au feu. Document de référence décrivant les performances certifiées d'un produit ou d'un montage selon un protocole d'essai normé.}
+\glossline{Design Studio}{Outil de développement d'interfaces utilisateur de l'écosystème Infor, utilisé ici pour construire l'interface du configurateur produit connecté à la base SQL.}
+\glossline{DENFC}{Dispositif d'évacuation naturelle de fumées et de chaleur. Système destiné à l'extraction naturelle des fumées en cas d'incendie.}
+\glossline{REI}{Résistance, Étanchéité et Isolation. Critères de performance au feu des éléments de construction, généralement exprimés en minutes.}
+\glossline{ERP}{Dans ce mémoire, le sigle renvoie principalement aux établissements recevant du public lorsqu'il est question de réglementation incendie ; dans d'autres contextes, il peut aussi désigner un progiciel de gestion intégré.}
+\glossline{iPart / iAssembly}{Fonctionnalités d'Autodesk Inventor permettant de gérer des familles de pièces ou d'assemblages paramétriques à partir d'un tableau de paramètres centralisé.}
+\glossline{PLM}{\textit{Product Lifecycle Management}. Ensemble de méthodes et d'outils permettant de piloter les données et processus liés au cycle de vie d'un produit.}
+\glossline{API COM}{Interface de programmation fondée sur le \textit{Component Object Model} de Microsoft. C'est par ce mécanisme qu'un script externe peut piloter Autodesk Inventor (ouverture de documents, lecture et écriture de paramètres).}
+\glossline{JSON}{\textit{JavaScript Object Notation}. Format texte de représentation de données structurées, utilisé ici pour le contrat d'interface et les rapports de validation.}
+\glossline{Versionnage sémantique}{Convention de numérotation de versions (majeur.mineur.patch) où chaque niveau indique la portée d'un changement : rupture de compatibilité, ajout rétrocompatible ou correction.}
+\glossline{Interopérabilité}{Capacité de plusieurs systèmes à échanger des données et à exploiter correctement l'information reçue sans perte de sens ni rupture de cohérence.}
+\end{longtable}

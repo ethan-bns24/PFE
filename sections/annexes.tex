@@ -1,0 +1,66 @@
+\chapter{Interface du configurateur Coveraccess}
+
+L'interface développée pour la gamme Coveraccess a été pensée pour guider l'utilisateur sans l'exposer inutilement à la complexité de la base de données. Son fonctionnement s'articule autour d'une logique séquentielle :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item sélection du module ou de la famille de produit ;
+\item saisie des dimensions utiles ;
+\item choix des options compatibles selon le contexte ;
+\item restitution des résultats de configuration et des sorties utiles au métier.
+\end{itemize}
+
+L'objectif principal n'était pas de proposer une interface spectaculaire, mais un outil lisible, pédagogique et exploitable au quotidien. Une capture d'écran peut être insérée ici lors de la version finale si elle est autorisée par l'entreprise.
+
+\chapter{Synthèse des gammes configurées}
+
+\begin{table}[H]
+\centering
+\caption{Synthèse des gammes intégrées ou étudiées dans le configurateur}
+{\small
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.25\textwidth} p{0.25\textwidth} X}
+\toprule
+Gamme &  Type de produit & Spécificités principales \\
+\midrule
+Coveraccess (A4) & Trappe coupe-feu & Produit pilote du projet, utilisé pour structurer la première version de l'architecture SQL et de l'interface. \\
+DOORSLIDE (A4) & Porte coulissante coupe-feu & Première extension du modèle, ajoutant une logique de translation et des dépendances mécaniques spécifiques. \\
+DOORSTEEL (A5) & Porte coupe-feu & Consolidation de la démarche sur une gamme de portes, avec contraintes de structure, de quincaillerie et de compatibilité entre composants. \\
+PHONI LUX-AIR-PASS (A5) & Produit de désenfumage acoustique & Cas le plus complexe, combinant exigences de désenfumage, géométrie et performances acoustiques. \\
+Porte ONYX (A5) & Porte battante standard coupe-feu & Création d'un configurateur commun avec la MULTIDOOR. Le défi principal a été de lier ces deux produits de négoce au sein d'une même logique. \\
+Porte MULTIDOOR (A5) & Porte battante non feu & Produit de négoce intégré au même configurateur que la porte ONYX, nécessitant une gestion mutualisée des règles et des options. \\
+ScreenPass (A5) & Rideau de cantonnement & Produit similaire au CURTEX V2. Le défi a été de créer des tables communes pour allier efficacité et minimiser le nombre de tables et de lignes en base de données. \\
+CURTEX V2 (A5) & Rideau de compartimentage & Partage la même structure de données optimisée que le ScreenPass, démontrant la capacité à mutualiser l'architecture pour des produits proches. \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\chapter{Produits concernés par les modifications 3D}
+
+Les travaux réalisés sous Autodesk Inventor ont concerné plusieurs familles de modèles et de sous-ensembles, avec des objectifs variables selon les cas :
+
+\begin{table}[H]
+\centering
+\caption{Exemples de périmètres traités côté CAO}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.28\textwidth}X}
+\toprule
+Périmètre & Nature du travail réalisé \\
+\midrule
+Exubaie V2 & Simplification d'assemblage, clarification de la logique paramétrique et amélioration de la maintenabilité. \\
+Assemblages liés au compartimentage & Corrections issues des fiches de modification, mise à jour de plans et cohérence avec la fabrication. \\
+Sous-ensembles paramétriques & Vérification des paramètres, des contraintes et de la stabilité des variantes. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\chapter{Glossaire technique SQL complémentaire}
+
+\renewcommand{\arraystretch}{1.2}
+\glossrow=0
+\begin{longtable}{>{\bfseries}p{0.2\textwidth}p{0.72\textwidth}}
+\glossline{Clé primaire}{Champ garantissant l'unicité d'un enregistrement dans une table.}
+\glossline{Clé étrangère}{Champ assurant le lien logique entre deux tables en imposant une cohérence de référence.}
+\glossline{Procédure stockée}{Bloc d'instructions SQL enregistré dans la base et exécuté pour automatiser un traitement.}
+\glossline{Contrainte \texttt{CHECK}}{Règle appliquée au niveau de la base pour limiter les valeurs admissibles d'un champ.}
+\glossline{Vue SQL}{Requête enregistrée permettant de présenter des données de manière structurée sans dupliquer l'information.}
+\glossline{Jointure}{Opération reliant plusieurs tables à partir de champs communs.}
+\glossline{Schéma relationnel}{Représentation structurée des tables, attributs et relations d'une base de données.}
+\end{longtable}

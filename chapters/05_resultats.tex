@@ -1,0 +1,97 @@
+\chapter{Résultats et impact des solutions}
+
+\section{Valeur créée par mon intervention}
+
+Si je devais résumer la valeur créée pendant ces deux ans, je ne commencerais pas par le configurateur lui-même. Le résultat le plus durable est la mise en ordre de connaissances techniques qui existaient déjà dans l'entreprise, mais dispersées entre documents, fichiers de travail et expertise individuelle. Mon intervention a consisté à transformer cette connaissance en un système explicite, contrôlable, et surtout transmissible à quelqu'un qui n'a pas dix ans de maison.
+
+Avant le projet, une partie de la configuration reposait sur une lecture experte des PV feu et sur des fichiers intermédiaires qui demandaient de bien connaître les habitudes internes. Après les développements réalisés, cette logique a commencé à être portée par une base relationnelle, des règles testables et une interface guidant l'utilisateur. Le changement n'est donc pas uniquement technique : il modifie la manière dont l'entreprise peut capitaliser son savoir produit.
+
+\begin{table}[H]
+\centering
+\caption{Évolution apportée par le projet}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.23\textwidth}X X}
+\toprule
+Aspect & Situation initiale & Apport de mon travail \\
+\midrule
+Données techniques & Informations dispersées dans PV, Excel et pratiques internes. & Structuration en tables SQL et clarification des paramètres utiles. \\
+Règles métier & Interprétation manuelle, dépendante de l'expérience utilisateur. & Traduction en contraintes, filtres et procédures exploitables par le configurateur. \\
+Usage commercial et technique & Risque de relecture répétée et de divergence d'interprétation. & Interface guidée, messages explicites et sélection de configurations cohérentes. \\
+Lien avec la CAO & Continuité limitée entre configuration et modèle 3D. & Première liaison dynamique entre paramètres SQL et Autodesk Inventor. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Solutions proposées et outils mobilisés}
+
+Les solutions apportées pendant l'alternance ont mobilisé plusieurs outils d'ingénierie complémentaires. L'intérêt du projet ne résidait pas dans l'utilisation isolée de ces outils, mais dans leur combinaison pour répondre à un problème industriel concret : transformer une configuration complexe en un processus plus fiable, plus lisible et plus maintenable.
+
+\begin{table}[H]
+\centering
+\caption{Lien entre problèmes traités, solutions proposées et outils mobilisés}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.22\textwidth}X X X}
+\toprule
+Problème traité & Solution proposée & Outils mobilisés & Apport personnel \\
+\midrule
+Règles métier dispersées & Structuration relationnelle des paramètres, domaines de validité et compatibilités. & Analyse documentaire, modélisation de données, SQL Server. & Traduction d'informations réglementaires et métier en tables et règles exploitables. \\
+Risque d'erreur de configuration & Interface guidée avec filtrage des choix et messages d'alerte. & Infor Design Studio, requêtes SQL, procédures de contrôle. & Conception d'un parcours utilisateur visant à rendre la règle compréhensible sans exposer la complexité de la base. \\
+Hétérogénéité des gammes & Architecture générique enrichie par des compléments spécifiques à chaque produit. & Modélisation relationnelle, logique de généralisation/spécialisation, tests par extension de gamme. & Arbitrage entre généricité et lisibilité pour éviter un configurateur trop rigide ou trop abstrait. \\
+Rupture entre configuration et CAO & Première liaison entre paramètres SQL et modèle Autodesk Inventor. & Python, API COM Inventor, conventions de paramètres, validation de flux. & Identification des fragilités d'interface ayant conduit au sujet scientifique du contrat SQL--CAO. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Réduction des erreurs humaines}
+
+L'un des premiers effets observés avec le configurateur SQL a été la réduction du risque d'erreurs liées aux manipulations manuelles. Avant la structuration de la logique produit dans la base, une partie du travail reposait sur l'interprétation successive de documents techniques, de tableaux intermédiaires et de règles parfois non centralisées. Ce mode de fonctionnement n'était pas aberrant en soi, mais il exposait naturellement l'entreprise à des oublis, à des interprétations divergentes et à des reprises.
+
+Le configurateur a permis de déplacer une partie de cette charge cognitive vers l'outil. Une combinaison incohérente est plus facilement bloquée lorsqu'elle est traduite en règle explicite que lorsqu'elle repose uniquement sur l'attention de l'utilisateur. Le bénéfice n'est donc pas seulement un gain de confort ; il est aussi un gain de robustesse dans la préparation des configurations.
+
+Pour la partie CAO, les modifications réalisées sous Inventor ont également contribué à cette réduction des erreurs. Un modèle mieux paramétré et mieux documenté limite les ambiguïtés lors des mises à jour ultérieures et réduit le risque d'effets de bord non maîtrisés.
+
+\section{Gain d'efficacité opérationnelle}
+
+L'amélioration de l'efficacité s'est traduite de plusieurs façons. D'abord, le temps de recherche d'information a diminué. Une partie des règles métier auparavant dispersées a été centralisée dans la base et restituée par l'interface dans un ordre cohérent. Ensuite, les calculs et vérifications les plus répétitifs ont été automatisés, ce qui a libéré du temps pour les échanges de fond et les validations techniques.
+
+Je préfère être prudent sur la quantification de ce gain : il dépend fortement des gammes, de la maturité des données et du profil des utilisateurs, et je n'ai pas mis en place d'instrumentation permettant de le mesurer rigoureusement. C'est d'ailleurs une des choses que je ferais différemment aujourd'hui. En revanche, l'effet qualitatif a été net : les discussions internes ont progressivement porté moins sur la manière de retrouver ou de reformuler une règle, et davantage sur la qualité de la règle elle-même et sur la façon de faire évoluer l'outil.
+
+L'intégration avec Autodesk Inventor a également renforcé cette efficacité. Même si elle restait perfectible, elle a démontré qu'il était possible de réduire la rupture entre une configuration métier et sa traduction géométrique, ce qui représente un levier important pour la suite.
+
+\section{Amélioration de la communication interservices}
+
+Un apport moins visible, mais particulièrement important, concerne la communication entre services. Lorsque la logique produit reste implicite, chaque équipe développe ses propres raccourcis d'interprétation. Cela peut fonctionner tant que les personnes se connaissent bien et que les cas restent familiers, mais la situation devient plus fragile lorsque les gammes se complexifient ou que le nombre d'interlocuteurs augmente.
+
+Le configurateur a joué un rôle de médiateur technique. En rendant les règles plus explicites, il a offert un support commun de discussion entre R\&D, bureau d'études, production et fonctions commerciales. L'interface, les messages de validation et la structure des données ont servi de langage partagé. Cette fonction de clarification est souvent sous-estimée, alors qu'elle conditionne largement l'appropriation d'un outil.
+
+De la même manière, le travail sur les modèles 3D a facilité les échanges avec les équipes concernées par la fabrication. Les retours du terrain ont pu être traduits plus directement en modifications techniques documentées, ce qui a renforcé la boucle d'amélioration continue.
+
+\section{Phase de validation et démarche qualité}
+
+Les développements menés pendant l'alternance ont été accompagnés d'une logique de validation progressive. Cette validation ne s'est pas limitée à un contrôle technique ponctuel ; elle s'est construite en plusieurs niveaux.
+
+Le premier niveau était une validation technique interne au service R\&D : cohérence de la structure SQL, conformité des règles implémentées, stabilité des sorties générées et comportement général des interfaces. Le deuxième niveau relevait davantage de la validation métier : confrontation des résultats du configurateur aux attentes du bureau d'études, du service commercial ou aux documents de référence. Le troisième niveau concernait l'usage lui-même : s'assurer que l'outil était compréhensible, qu'il guidait correctement l'utilisateur et qu'il restait exploitable dans un environnement réel.
+
+Dans cette logique, la qualité n'a pas été pensée comme une étape finale, mais comme un fil rouge. Chaque extension à une nouvelle gamme a servi de test de robustesse pour l'architecture construite. Chaque difficulté rencontrée dans la liaison avec Inventor a, de son côté, nourri la réflexion méthodologique développée dans le chapitre scientifique.
+
+\section{Synthèse des livrables produits}
+
+\begin{table}[H]
+\centering
+\caption{Principaux livrables de l'alternance}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.28\textwidth}X}
+\toprule
+Livrable & Apport principal \\
+\midrule
+Corrections et optimisations de modèles 3D & Amélioration de la cohérence entre conception numérique, documentation technique et réalité de fabrication. \\
+Architecture SQL pour la configuration produit & Centralisation et formalisation des règles métier issues des PV feu et des connaissances internes. \\
+Interface Infor Design Studio & Mise à disposition d'un outil lisible pour sélectionner des configurations valides et générer des sorties utiles. \\
+Extension multi-gammes & Validation de la réutilisabilité de l'architecture sur Coveraccess et DOORSLIDE en A4, puis sur DOORSTEEL, PHONI LUX-AIR-PASS, ONYX, MULTIDOOR, ScreenPass et CURTEX V2 en A5. \\
+Liaison configurateur -- Inventor & Première démonstration d'une continuité numérique entre configuration métier et modèle 3D paramétrique. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Pris ensemble, ces livrables montrent que l'alternance n'a pas seulement produit un ensemble de développements techniques. Elle a contribué à structurer un socle de travail réutilisable pour la suite, en rapprochant des univers qui étaient encore trop souvent séparés : la donnée, la règle métier et la géométrie.
+
+\begin{encadretitre}{À retenir de ce chapitre}
+Les effets les plus nets sont qualitatifs : moins d'erreurs liées aux manipulations manuelles, un support commun de discussion entre services, et une capitalisation du savoir produit qui ne dépend plus uniquement des personnes. Le gain de temps existe, mais il n'a pas été mesuré de façon rigoureuse, ce qui reste une limite assumée de ce bilan.
+\end{encadretitre}

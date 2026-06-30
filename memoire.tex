@@ -1,0 +1,277 @@
+\documentclass[11pt,a4paper,oneside]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,french]{babel}
+\frenchsetup{StandardLists=true}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds}
+\usepackage{etoolbox}
+
+\tikzset{
+  bloc/.style={
+    draw=SBBlue, thick, rounded corners=2pt, fill=LightGrey,
+    text width=2.9cm, minimum height=1.05cm, align=center, font=\small
+  },
+  blocaccent/.style={
+    bloc, draw=SBAccent, fill=SBAccent!12
+  },
+  fleche/.style={-{Stealth[length=2.6mm]}, thick, color=SBInk},
+  flecheretour/.style={fleche, dashed, color=SBGrey},
+  etiquette/.style={font=\scriptsize\itshape, color=SBGrey, midway}
+}
+
+\setstretch{1.15}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{15pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\definecolor{SBBlue}{RGB}{21,55,92}
+\definecolor{SBAccent}{RGB}{34,120,102}
+\definecolor{SBInk}{RGB}{30,41,59}
+\definecolor{SBGrey}{RGB}{92,92,92}
+\definecolor{LightGrey}{RGB}{245,245,245}
+\definecolor{MidGrey}{RGB}{223,229,236}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=SBBlue,
+  urlcolor=SBAccent,
+  pdftitle={Memoire de PFE - Ethan Binisti},
+  pdfauthor={Ethan Binisti}
+}
+
+\AtBeginDocument{\color{SBInk}}
+
+\setlist[itemize]{topsep=0.5em,itemsep=0.3em}
+\setlist[enumerate]{topsep=0.5em,itemsep=0.3em}
+\renewcommand{\labelitemi}{\textcolor{SBAccent}{\small\textbullet}}
+\renewcommand{\labelitemii}{\textcolor{SBBlue}{\footnotesize\textbullet}}
+
+\captionsetup{
+  labelfont={bf,color=SBBlue},
+  textfont=small,
+  skip=8pt
+}
+
+% Zébrage léger des tableaux flottants (longtable : voir \glossline dans glossaire.tex)
+\AtBeginEnvironment{table}{\rowcolors{2}{LightGrey!60}{white}}
+
+% Encadrés TikZ : barre d'accent à gauche, fond gris clair, titre optionnel
+\newsavebox{\encadrecontenu}
+
+\newenvironment{encadre}{%
+  \par\addvspace{12pt}\noindent
+  \begin{lrbox}{\encadrecontenu}%
+  \begin{minipage}{\dimexpr\textwidth-23pt\relax}%
+  \setlength{\parskip}{0.35em}\small
+}{%
+  \end{minipage}\end{lrbox}%
+  \begin{tikzpicture}
+    \node[fill=LightGrey!70, inner sep=10pt, outer sep=0pt, anchor=west] (encboite) {\usebox{\encadrecontenu}};
+    \fill[SBAccent] (encboite.north west) rectangle ([xshift=2.5pt]encboite.south west);
+  \end{tikzpicture}\par\addvspace{12pt}
+}
+
+\newenvironment{encadretitre}[1]{%
+  \def\encadretitretexte{#1}%
+  \par\addvspace{16pt}\noindent
+  \begin{lrbox}{\encadrecontenu}%
+  \begin{minipage}{\dimexpr\textwidth-23pt\relax}%
+  \setlength{\parskip}{0.35em}%
+  \vspace*{0.55em}%
+}{%
+  \end{minipage}\end{lrbox}%
+  \begin{tikzpicture}
+    \node[fill=LightGrey!70, inner sep=10pt, outer sep=0pt, anchor=west] (encboite) {\usebox{\encadrecontenu}};
+    \fill[SBBlue] (encboite.north west) rectangle ([xshift=2.5pt]encboite.south west);
+    \node[fill=SBBlue, text=white, font=\bfseries\small, inner xsep=8pt, inner ysep=3.5pt, anchor=west]
+      at ([xshift=10pt]encboite.north west) {\encadretitretexte};
+  \end{tikzpicture}\par\addvspace{12pt}
+}
+
+\lstdefinelanguage{jsonmemoire}{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{LightGrey},
+  rulecolor=\color{MidGrey},
+  framerule=0.6pt,
+  numbers=left,
+  numberstyle=\tiny\color{SBGrey},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{blue!60!black},
+  showstringspaces=false
+}
+
+\newcommand{\AuteurMemoire}{Ethan Binisti}
+\newcommand{\TitreMemoire}{Développement de configurateurs SQL et intégration de la conception 3D pour le compartimentage chez Souchier-Boullet}
+\newcommand{\EntrepriseMemoire}{Souchier-Boullet}
+\newcommand{\ServiceMemoire}{Service R\&D}
+\newcommand{\VilleMemoire}{Collégien (77)}
+\newcommand{\MajeureMemoire}{Modélisation \& Numérique}
+\newcommand{\TuteurEcole}{Aminallah RABIA}
+\newcommand{\TuteurEntreprise}{David Maillart}
+\newcommand{\AnneeMemoire}{2025--2026}
+\newcommand{\StatutConfidentialite}{Document non confidentiel}
+
+% Tête de chapitre : pavé d'accent avec numéro blanc, titre, règle bicolore
+\newcommand{\chapnumbox}[1]{%
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{SBAccent}{\parbox[c][1.55cm][c]{1.55cm}{\centering
+    \color{white}\fontsize{30}{30}\selectfont\bfseries #1}}%
+}
+\newcommand{\chaprule}{%
+  \par\nointerlineskip\vspace{1.1ex}%
+  \noindent{\color{SBAccent}\rule{0.16\textwidth}{2.4pt}}%
+  {\color{MidGrey}\rule[0.75pt]{0.84\textwidth}{0.9pt}}\par
+}
+
+\titleformat{\chapter}[display]
+  {\normalfont}
+  {\filleft\chapnumbox{\thechapter}}
+  {1.2ex}
+  {\raggedright\Huge\bfseries\color{SBBlue}}
+  [\chaprule]
+
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont}
+  {}
+  {0pt}
+  {\raggedright\Huge\bfseries\color{SBBlue}}
+  [\chaprule]
+
+\titlespacing*{\chapter}{0pt}{0pt}{2.2ex}
+
+\titleformat{\section}
+  {\Large\bfseries\color{SBBlue}}
+  {\textcolor{SBAccent}{\rule[-2.5pt]{3.5pt}{14pt}}\hspace{0.55em}\thesection}
+  {0.7em}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{SBInk}}
+  {\thesubsection}
+  {0.65em}
+  {}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{SBAccent}}
+  {\thesubsubsection}
+  {0.6em}
+  {}
+
+\titlespacing*{\section}{0pt}{2.0ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.6ex}{0.6ex}
+\titlespacing*{\subsubsection}{0pt}{1.3ex}{0.4ex}
+
+\renewcommand{\contentsname}{Sommaire}
+\titlecontents{chapter}
+  [0em]
+  {\addvspace{0.75em}\bfseries\color{SBBlue}}
+  {\contentslabel{2.3em}}
+  {}
+  {\hfill\contentspage}
+
+\titlecontents{section}
+  [2.7em]
+  {\small}
+  {\contentslabel{2.6em}}
+  {}
+  {\titlerule*[0.6pc]{.}\contentspage}
+
+\titlecontents{subsection}
+  [5.9em]
+  {\small\color{SBGrey}}
+  {\contentslabel{3.2em}}
+  {}
+  {\titlerule*[0.6pc]{.}\contentspage}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{SBGrey}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{SBGrey}\AuteurMemoire\ |\ \EntrepriseMemoire}
+\fancyfoot[L]{\small\color{SBGrey}\StatutConfidentialite}
+\fancyfoot[C]{\small\bfseries\color{SBBlue}\thepage}
+\fancyfoot[R]{\small\color{SBGrey}\AnneeMemoire}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{MidGrey}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{MidGrey}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[L]{\small\color{SBGrey}\StatutConfidentialite}
+  \fancyfoot[C]{\small\bfseries\color{SBBlue}\thepage}
+  \fancyfoot[R]{\small\color{SBGrey}\AnneeMemoire}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\footrule}{\hbox to\headwidth{\color{MidGrey}\leaders\hrule height \footrulewidth\hfill}}
+}
+
+\begin{document}
+
+\pagenumbering{roman}
+\input{sections/page_de_garde}
+\clearpage
+
+\input{sections/remerciements}
+\clearpage
+
+\input{sections/glossaire}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\listoftables
+\listoffigures
+\clearpage
+
+\input{sections/resume}
+\clearpage
+
+\input{sections/abstract}
+\clearpage
+
+\pagenumbering{arabic}
+
+\input{chapters/01_introduction}
+\input{chapters/02_positionnement}
+\input{chapters/03_presentation}
+\input{chapters/04_deroulement}
+\input{chapters/05_resultats}
+\input{chapters/06_bilan}
+\input{chapters/07_approfondissement}
+\input{chapters/08_conclusion}
+
+\input{sections/bibliographie}
+\clearpage
+
+\appendix
+\input{sections/annexes}
+
+\end{document}

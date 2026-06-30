@@ -1,0 +1,715 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./memoire.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2024/06/29 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel/babel.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel-english/english.ldf)
+ (/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel-french/french.ldf))
+
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel/locale/fr/babel-fren
+ch.tex)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/babel/locale/en/babel-engl
+ish.tex)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/psnfss/helvet.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/microtype-pdftex.d
+ef) (/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/microtype.cfg)
+) (/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/titlesec/titlesec.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/titlesec/titletoc.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/caption/caption.sty
+(/Users/ethanbns/Library/texmf/tex/latex/caption/caption3.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/caption/ltcaption.sty))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+ (/usr/local/texlive/2025basic/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/gettitlestring/gettitlestr
+ing.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)
+) (/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilechec
+k.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/uniquecounter/uniquecounte
+r.sty))) (/Users/ethanbns/Library/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/listings/listings.sty
+(/Users/ethanbns/Library/texmf/tex/latex/listings/lstpatch.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/listings/lstmisc.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/listings/listings.cfg))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/Users/ethanbns/Library/texmf/tex/latex/float/float.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfutil-common.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/pgf.revision.tex)))
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
+.code.tex)) (/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgf.cfg)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfint.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
+)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/Users/ethanbns/Library/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/Users/ethanbns/Library/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/Users/ethanbns/Library/texmf/tex/latex/pgf/math/pgfmath.sty
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/math/pgfmath.code.tex))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/utilities/pgffor.code.tex))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/libraries/pgflibraryarrows.meta.
+code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.geometric.code.tex
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.geometric.code.tex))
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfit.code.tex)
+(/Users/ethanbns/Library/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarybackgrounds.code.tex)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef) (./memoire.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2025basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+)) (./memoire.out) (./memoire.out) (./sections/page_de_garde.tex
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+[1{/Users/ethanbns/Library/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/
+pdftex.map}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/base/8r.enc
+} <./logo_ESILV.png (PNG copy)> <./logo_Souchier.jpg>])
+(./sections/remerciements.tex)
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.242 \clearpage
+                 [1] (./sections/glossaire.tex [2])
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[3] (./memoire.toc
+[4]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[5]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[6])
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[7] (./memoire.lot)
+[8] (./memoire.lof)
+[9] (./sections/resume.tex)
+[10] (./sections/abstract.tex)
+[11] (./chapters/01_introduction.tex
+Chapitre 1.
+
+[1] (/usr/local/texlive/2025basic/texmf-dist/tex/latex/psnfss/ts1phv.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/phv/b/n/10.95 (+20) Structuration des
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/phv/b/n/10.95 (+20) Développement du
+
+Underfull \hbox (badness 3690) in paragraph at lines 59--59
+\T1/phv/m/n/10.95 (+20) im-plé-men-ta-tion des règles et
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/phv/b/n/10.95 (+20) Extension multi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/phv/m/n/10.95 (+20) Meilleure co-hé-rence entre
+
+Underfull \hbox (badness 3128) in paragraph at lines 59--59
+\T1/phv/m/n/10.95 (+20) nuité nu-mé-rique plus ro-buste
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[2]) (./chapters/02_positionnement.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[3]
+Chapitre 2.
+
+[4]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\T1/phv/b/n/10.95 (+20) Durabilité des per-for-
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\T1/phv/b/n/10.95 (+20) Interopérabilité nu-mé-
+
+Underfull \hbox (badness 1019) in paragraph at lines 63--63
+[]|\T1/phv/m/n/10.95 (+20) La liai-son SQL--CAO pré-pare
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[6]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[7]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[8]) (./chapters/03_presentation.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[9]
+Chapitre 3.
+
+[10]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[11]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[12]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[13]) (./chapters/04_deroulement.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[14]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[15]
+Chapitre 4.
+
+[16]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[17]
+Underfull \hbox (badness 1648) in paragraph at lines 93--93
+[]|\T1/phv/m/n/10.95 (+20) Interaction avec les autres élé-
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|\T1/phv/b/n/10.95 (+20) Documents tech-
+
+Underfull \hbox (badness 1077) in paragraph at lines 93--93
+[]|\T1/phv/m/n/10.95 (+20) Centralise les pa-ra-mètres, com-
+
+Underfull \hbox (badness 4341) in paragraph at lines 93--93
+\T1/phv/m/n/10.95 (+20) pa-ti-bi-li-tés, règles de cal-cul et
+
+Underfull \hbox (badness 6157) in paragraph at lines 93--93
+[]|\T1/phv/m/n/10.95 (+20) Transforme les va-leurs is-sues
+
+Underfull \hbox (badness 1210) in paragraph at lines 93--93
+\T1/phv/m/n/10.95 (+20) du confi-gu-ra-teur en pa-ra-mètres
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[18]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[19]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[20]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[21]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[22]) (./chapters/05_resultats.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[23]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[24]
+Chapitre 5.
+
+Underfull \hbox (badness 3792) in paragraph at lines 21--21
+[]|\T1/phv/m/n/10.95 (+20) Interprétation ma-nuelle, dé-pen-
+
+Underfull \hbox (badness 2884) in paragraph at lines 40--40
+[]|\T1/phv/b/n/10.95 (+20) Règles mé-tier dis-
+
+Underfull \hbox (badness 2913) in paragraph at lines 40--40
+[]|\T1/phv/m/n/10.95 (+20) Traduction d'in-for-ma-
+
+Underfull \hbox (badness 2653) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) mé-tier en tables et
+
+Underfull \hbox (badness 1019) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) fil-trage des choix et
+
+Underfull \hbox (badness 3657) in paragraph at lines 40--40
+[]|\T1/phv/m/n/10.95 (+20) Infor De-sign Stu-dio,
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+[]|\T1/phv/b/n/10.95 (+20) Hétérogénéité des
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+[]|\T1/phv/m/n/10.95 (+20) Modélisation re-la-
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) tion-nelle, lo-gique
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) de gé-né-ra-li-sa-
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) tion/spécialisation,
+
+Underfull \hbox (badness 5274) in paragraph at lines 40--40
+\T1/phv/m/n/10.95 (+20) pa-ra-mètres SQL et
+
+[25]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[26]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[27]) (./chapters/06_bilan.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[28]
+Chapitre 6.
+
+[29]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[30]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[31{/Users/ethanbns/Library/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[32]) (./chapters/07_approfondissement.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[33]
+Chapitre 7.
+
+[34]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[35]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[36]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[37]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[38]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[39]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[40]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[41]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[42]) (./chapters/08_conclusion.tex
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[43]
+Chapitre 8.
+) (./sections/bibliographie.tex
+[44]
+[45])
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 21.99997pt, for example:
+(fancyhdr)                \setlength{\headheight}{21.99997pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-6.99997pt}.
+
+[46] (./sections/annexes.tex
+Annexe A.
+
+[47]
+Annexe B.
+
+Underfull \hbox (badness 2285) in paragraph at lines 33--33
+[]|\T1/phv/m/n/10 (+20) Porte cou-lis-sante coupe-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/phv/b/n/10 (+20) PHONI LUX-AIR-PASS
+
+Underfull \hbox (badness 1845) in paragraph at lines 33--33
+[]|\T1/phv/m/n/10 (+20) Produit de désen-fu-mage
+
+Underfull \hbox (badness 6592) in paragraph at lines 33--33
+[]|\T1/phv/m/n/10 (+20) Porte bat-tante stan-dard
+
+Underfull \hbox (badness 2343) in paragraph at lines 33--33
+[]|\T1/phv/m/n/10 (+20) Rideau de com-par-ti-men-
+
+[48]
+Annexe C.
+
+[49]
+Annexe D.
+
+Underfull \hbox (badness 7981) in paragraph at lines 65--65
+[]|\T1/phv/b/n/10.95 (+20) Schéma re-la-tion-
+)
+[50] (./memoire.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `memoire.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{chapter*.22} has been referenced but does not exist
+, replaced by a fixed one
+
+</usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></Users/ethanbns/Library/texmf/fonts/type1/public/cm-super/sftt1000.p
+fb></Users/ethanbns/Library/texmf/fonts/type1/public/cm-super/sftt1095.pfb></Us
+ers/ethanbns/Library/texmf/fonts/type1/urw/helvetic/uhvb8a.pfb></Users/ethanbns
+/Library/texmf/fonts/type1/urw/helvetic/uhvr8a.pfb></Users/ethanbns/Library/tex
+mf/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on memoire.pdf (62 pages, 410366 bytes).
+Transcript written on memoire.log.

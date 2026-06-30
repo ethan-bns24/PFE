@@ -1,0 +1,11 @@
+{
+  "gamme": "Coveraccess",
+  "reference": "CFG-2026-0412",
+  "valeurs": {
+    "largeur": 1200,
+    "hauteur": 800,
+    "classement_feu": "EI60",
+    "type_support": "beton",
+    "option_joint": true
+  }
+}

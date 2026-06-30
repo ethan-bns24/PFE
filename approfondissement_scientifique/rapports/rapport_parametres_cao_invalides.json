@@ -1,0 +1,36 @@
+{
+  "ok": false,
+  "contrat": {
+    "gamme": "Coveraccess",
+    "version_contrat": "1.0.0"
+  },
+  "resume": {
+    "nb_parametres": 5,
+    "nb_erreurs": 3,
+    "classes_detectees": {
+      "R3": 1,
+      "R1": 1,
+      "R2": 1
+    }
+  },
+  "erreurs": [
+    {
+      "parametre": "largeur",
+      "classe": "R3",
+      "passe": "cao",
+      "message": "Le domaine du contrat [300, 1600] n'est pas entierement couvert par le modele Inventor [300, 1200] : risque de clampage silencieux."
+    },
+    {
+      "parametre": "hauteur",
+      "classe": "R1",
+      "passe": "cao",
+      "message": "Le parametre cible 'Hauteur' est absent du modele Inventor exporte."
+    },
+    {
+      "parametre": "type_support",
+      "classe": "R2",
+      "passe": "cao",
+      "message": "Le parametre Inventor 'TypeSupport' est de type 'numeric' alors que le contrat attend 'string'."
+    }
+  ]
+}

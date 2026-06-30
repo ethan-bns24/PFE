@@ -1,0 +1,59 @@
+{
+  "version_contrat": "1.0.0",
+  "gamme": "Coveraccess",
+  "description": "Contrat d'interface entre le configurateur SQL et le modele Autodesk Inventor de la gamme Coveraccess. Toute evolution du contrat doit suivre le versionnage semantique (patch / minor / major).",
+  "parametres": [
+    {
+      "id": "largeur",
+      "label": "Largeur utile",
+      "type": "integer",
+      "unite": "mm",
+      "domaine": { "min": 300, "max": 1600 },
+      "obligatoire": true,
+      "source_sql": "config.largeur_mm",
+      "cible_cao": "Largeur",
+      "dependances": []
+    },
+    {
+      "id": "hauteur",
+      "label": "Hauteur utile",
+      "type": "integer",
+      "unite": "mm",
+      "domaine": { "min": 300, "max": 1600 },
+      "obligatoire": true,
+      "source_sql": "config.hauteur_mm",
+      "cible_cao": "Hauteur",
+      "dependances": []
+    },
+    {
+      "id": "classement_feu",
+      "label": "Classement de resistance au feu",
+      "type": "string",
+      "domaine": { "valeurs": ["EI30", "EI60", "EI120"] },
+      "obligatoire": true,
+      "source_sql": "config.classement_feu",
+      "cible_cao": "ClassementFeu",
+      "dependances": []
+    },
+    {
+      "id": "type_support",
+      "label": "Type de support de pose",
+      "type": "string",
+      "domaine": { "valeurs": ["beton", "plancher_bois", "cloison_legere"] },
+      "obligatoire": true,
+      "source_sql": "config.type_support",
+      "cible_cao": "TypeSupport",
+      "dependances": []
+    },
+    {
+      "id": "option_joint",
+      "label": "Option joint intumescent renforce",
+      "type": "boolean",
+      "domaine": { "valeurs": [true, false] },
+      "obligatoire": false,
+      "source_sql": "config.option_joint",
+      "cible_cao": "OptionJoint",
+      "dependances": ["classement_feu"]
+    }
+  ]
+}

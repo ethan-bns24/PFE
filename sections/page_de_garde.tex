@@ -1,0 +1,76 @@
+\begin{titlepage}
+\thispagestyle{empty}
+\color{SBInk}
+
+% Bandeau vertical sur la tranche gauche
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[SBBlue] (current page.north west) rectangle
+    ([xshift=0.9cm]current page.south west);
+  \fill[SBAccent] ([xshift=0.9cm]current page.north west) rectangle
+    ([xshift=1.12cm]current page.south west);
+  \node[rotate=90, anchor=center, color=white, font=\small\bfseries]
+    at ([xshift=0.45cm, yshift=0cm]current page.west)
+    {MÉMOIRE DE PROJET DE FIN D'ÉTUDES --- \AnneeMemoire};
+\end{tikzpicture}
+
+\begin{center}
+
+{\large\textcolor{SBGrey}{Promotion 2026 -- 5\textsuperscript{e} année du cycle ingénieur (A5)}\par}
+\vspace{0.12cm}
+{\large\textcolor{SBGrey}{Majeure \MajeureMemoire}\par}
+
+\vspace{0.9cm}
+\noindent
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \IfFileExists{logo_ESILV.png}
+      {\includegraphics[height=2.3cm,keepaspectratio]{logo_ESILV.png}}
+      {\fcolorbox{MidGrey}{white}{\parbox[c][2.3cm][c]{0.75\linewidth}{\centering Logo ESILV}}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \IfFileExists{logo_Souchier.jpg}
+      {\includegraphics[height=2.3cm,keepaspectratio]{logo_Souchier.jpg}}
+      {\fcolorbox{MidGrey}{white}{\parbox[c][2.3cm][c]{0.75\linewidth}{\centering Logo Souchier-Boullet}}}
+\end{minipage}
+
+\vspace{1.6cm}
+
+% Bloc titre avec barre d'accent
+\noindent
+\begin{minipage}{0.94\textwidth}
+\raggedright
+{\color{SBAccent}\rule{0.22\textwidth}{3pt}}\par
+\vspace{0.45cm}
+{\fontsize{22}{27}\selectfont\bfseries\textcolor{SBBlue}{\TitreMemoire}\par}
+\vspace{0.4cm}
+{\large\textcolor{SBAccent}{Configurateurs produit, base SQL et continuité numérique 3D}\par}
+\vspace{0.45cm}
+{\color{SBAccent}\rule{0.22\textwidth}{3pt}}\par
+\end{minipage}
+
+\vspace{0.9cm}
+{\normalsize\textcolor{SBGrey}{Mémoire d'alternance -- Service Recherche \& Développement}\par}
+
+\vfill
+
+% Fiche d'identité du mémoire
+\setlength{\fboxsep}{14pt}
+\noindent
+\colorbox{LightGrey}{%
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{@{}ll@{\hspace{1cm}}}
+\textcolor{SBBlue}{\textbf{Nom / prénom}} & \AuteurMemoire \\
+\textcolor{SBBlue}{\textbf{Entreprise}} & \EntrepriseMemoire\ -- \VilleMemoire \\
+\textcolor{SBBlue}{\textbf{Tuteur entreprise}} & \TuteurEntreprise \\
+\textcolor{SBBlue}{\textbf{Tuteur école}} & \TuteurEcole \\
+\textcolor{SBBlue}{\textbf{Année académique}} & \AnneeMemoire \\
+\textcolor{SBBlue}{\textbf{Confidentialité}} & \StatutConfidentialite \\
+\end{tabular}}
+
+\vspace{0.8cm}
+\noindent{\color{SBBlue}\rule{0.94\textwidth}{1.6pt}}
+
+\end{center}
+\end{titlepage}

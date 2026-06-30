@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "contrat": {
+    "gamme": "Coveraccess",
+    "version_contrat": "1.0.0"
+  },
+  "resume": {
+    "nb_parametres": 5,
+    "nb_erreurs": 0,
+    "classes_detectees": {}
+  },
+  "erreurs": []
+}

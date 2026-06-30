@@ -1,0 +1,12 @@
+{
+  "modele": "COVERACCESS_V3.iam",
+  "source": "Autodesk Inventor (export simule des parametres utilisateur)",
+  "date_export": "2026-05-28",
+  "parametres": {
+    "Largeur": { "type": "integer", "unite": "mm", "min": 300, "max": 1600 },
+    "Hauteur": { "type": "integer", "unite": "mm", "min": 300, "max": 1600 },
+    "ClassementFeu": { "type": "text" },
+    "TypeSupport": { "type": "text" },
+    "OptionJoint": { "type": "boolean" }
+  }
+}

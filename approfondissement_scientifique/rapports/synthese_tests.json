@@ -1,0 +1,59 @@
+{
+  "contrat": {
+    "gamme": "Coveraccess",
+    "version_contrat": "1.0.0"
+  },
+  "scenarios": [
+    {
+      "nom": "cas_nominal",
+      "description": "Configuration, schema SQL et parametres CAO coherents avec le contrat.",
+      "ok": true,
+      "nb_erreurs": 0,
+      "classes_detectees": {},
+      "conforme_a_l_attendu": true
+    },
+    {
+      "nom": "configuration_invalide",
+      "description": "Largeur hors domaine, hauteur absente, classement feu inconnu, booleen en chaine.",
+      "ok": false,
+      "nb_erreurs": 4,
+      "classes_detectees": {
+        "R3": 2,
+        "R4": 1,
+        "R2": 1
+      },
+      "conforme_a_l_attendu": true
+    },
+    {
+      "nom": "schema_sql_invalide",
+      "description": "Champ source renomme et changement de type non synchronise cote SQL.",
+      "ok": false,
+      "nb_erreurs": 2,
+      "classes_detectees": {
+        "R1": 1,
+        "R2": 1
+      },
+      "conforme_a_l_attendu": true
+    },
+    {
+      "nom": "parametres_cao_invalides",
+      "description": "Cible renommee, type modifie et domaine retreci cote modele Inventor.",
+      "ok": false,
+      "nb_erreurs": 3,
+      "classes_detectees": {
+        "R3": 1,
+        "R1": 1,
+        "R2": 1
+      },
+      "conforme_a_l_attendu": true
+    }
+  ],
+  "total_erreurs_detectees": 9,
+  "total_par_classe": {
+    "R3": 3,
+    "R4": 1,
+    "R2": 3,
+    "R1": 2
+  },
+  "suite_conforme": true
+}

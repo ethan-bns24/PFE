@@ -1,0 +1,14 @@
+{
+  "source": "SQL Server (export simule du schema, version degradee)",
+  "date_export": "2026-05-28",
+  "commentaire": "Scenario de test : le champ largeur_mm a ete renomme en largeur (rupture R1) et option_joint a change de type (rupture R2).",
+  "tables": {
+    "config": {
+      "largeur": { "type": "int" },
+      "hauteur_mm": { "type": "int" },
+      "classement_feu": { "type": "nvarchar" },
+      "type_support": { "type": "nvarchar" },
+      "option_joint": { "type": "nvarchar" }
+    }
+  }
+}

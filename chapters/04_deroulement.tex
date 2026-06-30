@@ -1,0 +1,219 @@
+\chapter{Déroulement technique de l'alternance}
+
+\section{Méthodologie de modification des modèles 3D}
+
+\subsection{Processus de traitement des fiches de modification}
+
+L'une de mes premières responsabilités a consisté à traiter des fiches de modification remontées par la production ou par le bureau d'études. Ces fiches décrivaient des écarts constatés en fabrication, des besoins de simplification, des ajustements fonctionnels ou des incohérences documentaires. Leur traitement suivait une logique en plusieurs étapes.
+
+La première étape était l'analyse du besoin. Il fallait comprendre non seulement ce qui devait être modifié, mais aussi pourquoi la demande apparaissait. Une modification purement géométrique n'a pas les mêmes implications qu'un changement lié à une contrainte d'assemblage, à une difficulté de fabrication ou à un problème de nomenclature.
+
+La deuxième étape consistait à localiser précisément le problème dans l'environnement numérique : modèle 3D, plan associé, paramètres, sous-ensembles, iParts ou iAssemblies concernés. Cette phase était souvent déterminante, car une mauvaise lecture de l'origine du problème pouvait conduire à corriger un symptôme sans traiter la cause.
+
+La troisième étape portait sur l'implémentation elle-même. La modification devait préserver autant que possible la logique paramétrique du modèle, rester cohérente avec les autres variantes de la gamme et éviter d'introduire de nouveaux points de fragilité. Une fois la modification intégrée, il fallait vérifier sa cohérence sur les documents associés, puis la documenter afin d'en assurer la traçabilité.
+
+\subsection{Techniques d'optimisation sur Autodesk Inventor}
+
+Travailler dans Autodesk Inventor sur des ensembles industriels m'a confronté à une exigence de précision qui dépasse largement la simple modélisation géométrique. Dans ce type d'environnement, un bon modèle est un modèle compréhensible, robuste à la variation, et capable de supporter des évolutions sans se dégrader à chaque nouvelle demande.
+
+Plusieurs techniques ont été mobilisées dans cette logique :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item clarification des paramètres et amélioration de leur cohérence de nommage ;
+\item rationalisation des contraintes d'assemblage pour éviter les comportements instables ;
+\item simplification de certains sous-ensembles lorsque la complexité du modèle n'apportait pas de valeur opérationnelle ;
+\item vérification de la cohérence entre modèle, plan et nomenclature ;
+\item attention particulière portée à la maintenabilité des iParts et iAssemblies.
+\end{itemize}
+
+Cette mission m'a appris qu'un modèle paramétrique ne doit pas uniquement fonctionner dans le cas nominal. Il doit aussi rester intelligible lorsqu'une autre personne le reprend, lorsqu'un nouveau paramètre apparaît ou lorsqu'une contrainte de fabrication évolue. Cette exigence de lisibilité a fortement influencé ma façon d'aborder ensuite la structuration des données côté SQL.
+
+\subsection{Cas concret : simplification de l'Exubaie V2}
+
+Parmi les modifications traitées, le cas de l'Exubaie V2 mérite d'être détaillé, car il illustre bien le lien entre complexité de modélisation et difficulté de maintenance. Le besoin initial portait sur la simplification d'un ensemble afin d'en améliorer la lisibilité et de réduire certaines incohérences entre le modèle et son usage en aval.
+
+Le travail réalisé a consisté à reprendre la logique de l'assemblage, à identifier les paramètres réellement structurants, puis à supprimer ou regrouper certaines dépendances qui rendaient le modèle plus fragile qu'utile. L'objectif n'était pas de produire un modèle simplifié au sens graphique du terme, mais un modèle dont on comprend la logique sans avoir à interroger son auteur.
+
+Ce cas m'a montré que l'optimisation d'un modèle 3D n'est pas un exercice isolé. Elle oblige à se demander quelles informations doivent réellement être portées par le modèle, lesquelles peuvent rester documentaires, et comment conserver un juste équilibre entre richesse fonctionnelle et robustesse d'usage.
+
+\section{Développement du configurateur SQL -- Année 1 (Coveraccess)}
+
+\subsection{Du PV feu au fichier Excel, du fichier Excel au configurateur}
+
+Le point de départ du configurateur n'était pas une base propre et prête à l'emploi, mais un ensemble de documents techniques, de tableaux intermédiaires et de règles métier parfois implicites. L'une des premières tâches a donc été de convertir cette matière brute en un format progressivement structuré.
+
+Dans un premier temps, les informations issues des procès-verbaux feu ont été reformulées dans des tableaux de travail afin d'identifier les dimensions limites, les combinaisons autorisées, les variantes de mise en \oe uvre et les dépendances entre options. Pour donner un ordre d'idée de ce que cela représente : une même trappe ne dispose pas du même domaine dimensionnel selon le type de support sur lequel elle est posée, certaines options de quincaillerie ne sont validées que pour certains classements feu, et une dimension peut être admissible seule mais interdite en combinaison avec une autre. Cette étape de mise à plat était indispensable : elle permettait de vérifier que la règle avait été correctement comprise avant d'être traduite dans une base, et plusieurs de mes premières interprétations ont d'ailleurs été corrigées à ce stade par les ingénieurs qui connaissaient l'historique des essais.
+
+Le passage d'Excel à SQL a constitué un changement d'échelle méthodologique. Là où un tableau permet de ranger l'information, une base relationnelle oblige à choisir explicitement les entités, les relations, les cardinalités et les contraintes de validité. Cette formalisation a été l'un des apports les plus importants du projet.
+
+\subsection{Architecture de la base de données}
+
+L'architecture conçue pour la gamme Coveraccess devait répondre à deux objectifs en tension : être suffisamment précise pour représenter fidèlement les règles métier du produit, tout en restant suffisamment générique pour pouvoir être étendue à d'autres gammes par la suite.
+
+Le schéma a donc été organisé autour de plusieurs familles d'information : définition des produits et sous-familles, paramètres dimensionnels, options et accessoires, domaines de validité, compatibilités, règles de calcul et informations nécessaires à la génération de sorties métiers. Cette structuration a permis de séparer la donnée descriptive, la donnée de contrainte et la logique de calcul.
+
+Un soin particulier a été apporté à la lisibilité de l'architecture. Dans un projet de ce type, la performance technique ne suffit pas ; il faut aussi que le schéma soit compréhensible par les personnes amenées à le maintenir ou à le relire plus tard. Cet aspect de lisibilité a joué un rôle important dans les choix de nommage, de découpage des tables et de documentation.
+
+\subsection{Architecture fonctionnelle et interactions entre sous-systèmes}
+
+La solution conçue ne reposait pas sur un outil unique, mais sur un ensemble de sous-systèmes devant rester cohérents entre eux. Cette architecture peut être comprise comme une chaîne de transformation progressive de l'information : une règle issue d'un document technique devient une donnée structurée, puis une contrainte exploitable par l'interface, puis éventuellement un paramètre envoyé vers la CAO. La figure \ref{fig:archi-globale} résume cette chaîne et les flux entre les briques.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.55cm and 0.9cm]
+  \node[bloc] (docs) {Documents techniques\\\scriptsize PV feu, Excel, règles métier};
+  \node[bloc, right=of docs] (sql) {Base SQL\\\scriptsize SQL Server : tables, règles, procédures};
+  \node[bloc, right=of sql] (ihm) {Interface\\\scriptsize Infor Design Studio};
+  \node[blocaccent, below=1.1cm of ihm] (script) {Script de liaison\\\scriptsize Python, validation};
+  \node[bloc, left=1.5cm of script] (cao) {Modèle 3D\\\scriptsize Autodesk Inventor};
+
+  \draw[fleche] (docs) -- node[etiquette, above]{analyse} (sql);
+  \draw[fleche] (sql) -- node[etiquette, above]{requêtes} (ihm);
+  \draw[fleche] (ihm) -- node[etiquette, right]{export des paramètres} (script);
+  \draw[fleche] (script) -- node[etiquette, above]{API COM} (cao);
+  \draw[flecheretour] (cao.south) -- ++(0,-0.5) -| node[etiquette, below, pos=0.22]{écarts constatés, fiches de modification} (docs.south);
+\end{tikzpicture}
+\caption{Architecture globale de la solution : de la règle métier au modèle 3D paramétré}
+\label{fig:archi-globale}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Sous-systèmes de la solution et interactions principales}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.22\textwidth}X X}
+\toprule
+Sous-système & Rôle dans la solution & Interaction avec les autres éléments \\
+\midrule
+Documents techniques & Source des domaines de validité, classements, dimensions et exclusions. & Alimentent l'analyse métier avant traduction en tables et règles SQL. \\
+Base SQL & Centralise les paramètres, compatibilités, règles de calcul et contraintes. & Fournit les données à l'interface et prépare les paramètres utiles à la CAO. \\
+Interface Design Studio & Guide l'utilisateur dans une configuration valide et affiche les retours métier. & Interroge la base SQL, filtre les choix et restitue les résultats compréhensibles. \\
+Script de liaison & Sert de passerelle entre la configuration validée et le modèle paramétrique. & Transforme les valeurs issues du configurateur en paramètres consommables par Inventor. \\
+Modèle Autodesk Inventor & Représente la traduction géométrique de la configuration. & Reçoit les paramètres et met en évidence les limites de robustesse de la liaison. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Cette lecture par sous-systèmes a été essentielle pour éviter de raisonner uniquement en termes de développement SQL ou de modélisation 3D. La difficulté de conception venait précisément des interactions : une règle correcte dans la base pouvait rester inutile si elle était mal restituée dans l'interface ; un paramètre correctement choisi par l'utilisateur pouvait devenir fragile si son nom ou son type n'était pas cohérent avec Inventor. Le projet a donc demandé une conception d'ensemble, attentive aux flux de données, aux conventions de nommage et aux responsabilités de chaque brique.
+
+\subsection{Choix de conception et arbitrages techniques}
+
+Plusieurs choix de conception ont été nécessaires pour éviter de produire une base de données trop dépendante d'un seul produit. Le premier arbitrage a consisté à séparer ce qui relevait de la donnée stable, comme les familles de produits ou les domaines dimensionnels, de ce qui relevait davantage de la règle calculée ou de la compatibilité entre options. Cette séparation rendait l'architecture plus lisible et facilitait sa réutilisation sur de nouvelles gammes.
+
+Le deuxième arbitrage a concerné le niveau de généricité. Une architecture trop spécifique aurait été rapide à développer pour Coveraccess, mais difficile à transposer. À l'inverse, un modèle trop abstrait aurait été plus élégant en théorie, mais plus lourd à maintenir. J'ai donc cherché un compromis : suffisamment générique pour accueillir les huit gammes configurées au terme de l'alternance, mais suffisamment concret pour rester compréhensible par les équipes.
+
+Le troisième choix portait sur la place des messages d'erreur et des contrôles. Il aurait été possible de laisser certaines incohérences être détectées tardivement, au moment de l'usage. J'ai au contraire privilégié une logique de validation en amont, afin que l'utilisateur soit guidé dès la saisie et que le configurateur devienne un outil d'aide à la décision plutôt qu'un simple formulaire.
+
+\subsection{Implémentation des règles métier}
+
+La difficulté principale n'était pas d'écrire du SQL au sens syntaxique, mais de traduire correctement des règles issues du métier. Une même décision de configuration peut dépendre de plusieurs paramètres à la fois : dimensions, type de support, niveau de résistance au feu, accessoires, options de fermeture, ou encore famille produit sélectionnée.
+
+Les procédures et requêtes développées ont donc eu pour rôle d'assurer plusieurs fonctions :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item vérifier la validité d'une combinaison de paramètres ;
+\item filtrer automatiquement les options incompatibles ;
+\item calculer certaines valeurs dérivées utiles au produit ou à la nomenclature ;
+\item fournir à l'interface des retours explicites en cas d'incompatibilité.
+\end{itemize}
+
+Le configurateur n'était pas pensé comme un simple catalogue dynamique, mais comme un moteur de décision encadré par des règles. Cette distinction est importante : elle explique pourquoi la qualité des données et la clarté des règles ont été aussi essentielles que l'ergonomie de l'interface.
+
+\subsection{Développement de l'interface Design Studio}
+
+L'interface réalisée dans Infor Design Studio devait rendre la logique de configuration accessible sans noyer l'utilisateur dans la complexité de la base. Une grande attention a donc été portée à la hiérarchie des informations présentées, au séquencement des choix et à la qualité des retours affichés.
+
+L'utilisateur est guidé pas à pas : choix de la famille ou du module, saisie des dimensions, sélection des options compatibles, puis génération des données de sortie utiles. Les messages d'alerte jouent ici un rôle important. Un configurateur qui se contente de refuser silencieusement une option perd vite sa valeur. À l'inverse, un configurateur capable d'expliquer pourquoi une combinaison n'est pas autorisée devient un outil d'aide à la décision.
+
+Le développement de cette interface m'a appris qu'en environnement industriel, l'ergonomie n'est pas un sujet secondaire. Elle conditionne l'appropriation de l'outil et donc sa valeur réelle pour l'entreprise.
+
+\subsection{Étude de cas : le module de compartimentage Coveraccess}
+
+La gamme Coveraccess a joué un rôle de produit pilote. Elle présentait un niveau de complexité suffisamment riche pour éprouver la méthode sans rendre le projet ingérable dès les premières étapes. Sur cette gamme, j'ai pu construire une chaîne relativement complète : extraction et structuration des données, modélisation relationnelle, implémentation des règles, interface de sélection et génération d'une configuration exploitable.
+
+Ce cas a constitué une vitrine interne du projet. Il a permis de montrer qu'une logique jusque-là très dépendante d'une lecture experte pouvait être traduite dans un outil plus systématique. Il a également servi de base de discussion avec les autres services : à partir d'un premier cas concret, il devenait plus facile d'identifier ce qu'il fallait généraliser, adapter ou renforcer avant de changer d'échelle.
+
+\section{Extension du périmètre -- de l'A4 à l'A5}
+
+\subsection{Méthodologie d'extension aux nouvelles gammes}
+
+Après la construction du socle sur Coveraccess, l'extension du périmètre s'est faite en deux temps. En A4, une première transposition a été engagée sur DOORSLIDE afin de vérifier que la logique du configurateur pouvait dépasser le cas initial de la trappe coupe-feu. En A5, le travail s'est poursuivi avec six gammes supplémentaires : DOORSTEEL et PHONI LUX-AIR-PASS d'abord, puis les portes ONYX et MULTIDOOR, enfin les rideaux ScreenPass et CURTEX V2. Cette progression a permis de distinguer, gamme après gamme, ce qui relevait d'un noyau générique réellement réutilisable de ce qui restait spécifique à chaque famille de produits.
+
+La méthode d'extension suivait une logique constante :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item analyse de la gamme et de ses documents de référence ;
+\item identification des paramètres réellement discriminants ;
+\item comparaison avec le modèle de données existant ;
+\item réutilisation des structures génériques lorsqu'elles étaient adaptées ;
+\item ajout de nouvelles règles ou de nouveaux champs lorsque la gamme introduisait une spécificité non couverte.
+\end{itemize}
+
+Cette démarche progressive a confirmé que l'objectif n'était pas de construire un configurateur figé, mais une architecture capable d'absorber de nouveaux cas sans se déformer à chaque extension.
+
+\subsection{DOORSLIDE -- Première extension engagée en A4}
+
+L'extension à DOORSLIDE a marqué une étape importante dès l'A4. Contrairement à Coveraccess, qui relevait d'une logique de trappe coupe-feu, cette gamme introduisait une logique de porte coulissante avec des contraintes de translation, de guidage, de quincaillerie et d'interactions mécaniques plus nombreuses entre composants.
+
+Cette évolution a obligé à enrichir la structure de données et à revoir certaines hypothèses de modélisation. Le projet a ainsi montré que la réutilisation ne signifie pas duplication. Une architecture générique n'est utile que si elle peut être adaptée intelligemment à la diversité des produits, sans masquer les spécificités mécaniques d'une gamme coulissante.
+
+L'un des enseignements de cette phase a été de constater que les écarts entre gammes ne se situent pas uniquement au niveau des paramètres visibles. Ils concernent aussi la manière dont les règles s'enchaînent, la granularité de la donnée utile et la nature des dépendances entre options.
+
+\subsection{DOORSTEEL -- Consolidation de la démarche en A5}
+
+En A5, la gamme DOORSTEEL a permis de consolider la démarche sur une famille de portes coupe-feu plus proche d'une logique battante. Le travail a porté sur la structuration des paramètres de dimensions, de composition, de quincaillerie et de compatibilité entre éléments. Cette gamme a été utile pour tester la capacité du modèle de données à représenter une porte sans reprendre intégralement la logique spécifique à DOORSLIDE.
+
+Cette étape a aussi renforcé la nécessité de documenter les choix de conception. Certaines règles pouvaient sembler similaires d'une gamme à l'autre, mais ne produisaient pas les mêmes conséquences selon la structure du produit, le mode d'ouverture ou les contraintes de mise en \oe uvre. La consolidation sur DOORSTEEL a donc joué un rôle de validation intermédiaire entre le produit pilote et les gammes plus complexes.
+
+\subsection{PHONI LUX-AIR-PASS -- Produits combinant désenfumage et acoustique}
+
+La gamme PHONI LUX-AIR-PASS a constitué le cas le plus complexe de l'alternance. Elle combine en effet plusieurs logiques de performance : désenfumage, exigences dimensionnelles, contraintes d'intégration et, surtout, performances acoustiques. Cette coexistence de critères issus de corpus techniques distincts a fortement enrichi le projet.
+
+Sur cette gamme, la difficulté ne résidait pas uniquement dans le nombre de paramètres, mais dans la coexistence de plusieurs systèmes de validité. Il fallait articuler des informations provenant de documents différents, conserver la cohérence des calculs, et proposer une interface qui reste lisible malgré cette densité.
+
+Cette gamme m'a obligé à sortir d'une logique purement feu ou géométrique : les performances acoustiques obéissent à leur propre corpus documentaire, avec leurs propres seuils et leurs propres conditions de validité. Un configurateur industriel robuste doit pouvoir agréger ces dimensions de performance hétérogènes sans perdre en clarté, et c'est sur ce point que l'architecture construite sur les gammes précédentes a montré à la fois sa valeur et ses limites.
+
+\subsection{Porte ONYX et Porte MULTIDOOR -- Configurateur mutualisé de négoce}
+
+Les portes ONYX et MULTIDOOR ont introduit une logique différente des gammes feu développées jusque-là. Il s'agissait de produits de négoce, avec des règles de composition et d'options propres au catalogue commercial, mais que l'entreprise souhaitait tout de même intégrer dans le même outil de configuration.
+
+Le défi principal n'était pas technique au sens strict : il fallait faire cohabiter dans une même interface une porte battante coupe-feu (ONYX) et une porte battante non feu (MULTIDOOR), sans dupliquer l'ensemble de la base. J'ai donc structuré un configurateur commun, avec un noyau partagé pour les dimensions, les finitions et les options de quincaillerie, et des modules de règles distincts pour ce qui relevait du classement feu ou de la conformité réglementaire.
+
+Cette mutualisation a été une bonne épreuve de l'architecture : elle a montré que le modèle pouvait absorber des produits aux statuts réglementaires différents, à condition de bien séparer ce qui est commun de ce qui est spécifique.
+
+\subsection{ScreenPass et CURTEX V2 -- Mutualisation pour les rideaux de compartimentage}
+
+Les rideaux ScreenPass et CURTEX V2 sont des produits proches sur le plan fonctionnel, mais avec des variantes de pose et de composition qui auraient pu conduire à deux bases distinctes. Pour limiter la dette de maintenance, j'ai choisi de faire partager aux deux gammes une même structure de tables, en ne spécialisant que les règles qui divergent réellement.
+
+Le travail a surtout porté sur l'optimisation du schéma : réduire le nombre de tables redondantes, mutualiser les domaines de validité dimensionnels et factoriser les règles de compatibilité entre options. L'objectif était de garder une base lisible malgré la multiplication des gammes, ce qui devient critique quand plusieurs produits similaires coexistent dans le même configurateur.
+
+\section{Intégration dynamique entre le configurateur SQL et Autodesk Inventor}
+
+\subsection{Principe et motivation}
+
+L'une des avancées de la deuxième année a été la mise en place d'une liaison dynamique entre le configurateur SQL et Autodesk Inventor. Sur le papier, rien de compliqué : à partir d'une configuration validée dans l'interface, transmettre les paramètres utiles à un script qui ouvre le modèle 3D correspondant et le paramètre. En pratique, cette liaison s'est révélée être la partie la plus instructive du projet, précisément parce qu'elle ne s'est pas comportée comme prévu.
+
+Cette intégration répondait à un besoin concret. Tant que la configuration et la CAO vivent dans des mondes séparés, une rupture demeure entre la décision métier et sa traduction géométrique. En rapprochant ces deux univers, on améliore la continuité numérique et on réduit les ressaisies.
+
+\subsection{Architecture technique de l'intégration}
+
+L'architecture mise en place reposait sur une chaîne séquentielle relativement claire :
+
+\begin{enumerate}[leftmargin=1.4cm]
+\item l'utilisateur sélectionne une configuration dans l'interface Design Studio ;
+\item le configurateur interroge la base SQL et rassemble les paramètres utiles ;
+\item un export structuré est transmis à un script Python de liaison ;
+\item le script dialogue avec l'API COM d'Autodesk Inventor ;
+\item le modèle paramétrique adapté est ouvert et mis à jour avec les valeurs reçues.
+\end{enumerate}
+
+Cette architecture a permis de démontrer la faisabilité d'un enchaînement cohérent entre configuration et CAO, tout en restant compatible avec l'écosystème logiciel déjà en place dans l'entreprise. Elle a également mis en évidence la dépendance forte de la liaison aux conventions de nommage et à la stabilité des paramètres partagés.
+
+\subsection{Limites identifiées et enseignements}
+
+Les premiers tests ont montré que l'intégration fonctionnait dans les cas nominaux, mais qu'elle restait vulnérable aux changements de structure. L'exemple le plus parlant est survenu en phase de test : un paramètre avait été renommé dans le modèle Inventor, sans que le configurateur en soit informé. Le script s'est exécuté sans erreur apparente, mais le modèle ouvert ne correspondait plus à la configuration choisie. Aucun message, aucun avertissement : juste un résultat faux qui avait l'air juste.
+
+Ce type de défaillance silencieuse est bien plus problématique qu'un plantage franc, parce qu'il mine la confiance des utilisateurs dans l'outil. C'est ce constat, plus que tout autre, qui a déclenché le chapitre d'approfondissement scientifique de ce mémoire : passer d'une liaison fondée sur des conventions implicites à une liaison sécurisée par un contrat d'interface formel et un mécanisme de validation préalable.
+
+\begin{encadretitre}{À retenir de ce chapitre}
+Une chaîne complète a été construite, du PV feu jusqu'au modèle 3D paramétré : structuration SQL, règles métier, interface Design Studio, puis liaison avec Inventor. La méthode, éprouvée sur Coveraccess, a été étendue à huit gammes au total (voir annexe B). La liaison SQL--CAO fonctionne, mais sa dépendance à des conventions implicites constitue le point de fragilité que le chapitre 7 prend pour objet.
+\end{encadretitre}

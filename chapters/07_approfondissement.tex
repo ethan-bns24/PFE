@@ -1,0 +1,313 @@
+\chapter[Chapitre d'approfondissement scientifique]{Chapitre d'approfondissement scientifique : formalisation d'un contrat d'interface entre configurateur SQL et modeleur CAO paramétrique}
+
+\section{Introduction}
+
+\subsection{Contexte et problématique}
+
+L'une des réalisations les plus significatives de mon alternance a été le rapprochement entre deux univers qui, dans beaucoup d'environnements industriels, restent encore faiblement connectés : la configuration métier d'un produit et sa représentation géométrique paramétrique. Chez Souchier-Boullet, ce rapprochement s'est matérialisé par une liaison entre un configurateur produit construit autour d'une base SQL et Autodesk Inventor, utilisé pour la modélisation 3D.
+
+Les premiers résultats de cette intégration ont été encourageants. À partir d'une configuration sélectionnée dans l'interface, il devenait possible d'ouvrir le modèle 3D correspondant et de lui transmettre des paramètres utiles. Pourtant, les phases de test ont rapidement révélé une fragilité structurelle : la liaison reposait principalement sur des conventions implicites de nommage et sur une connaissance partagée mais non formalisée des paramètres échangés.
+
+En pratique, cela signifiait qu'une évolution mineure d'un modèle Inventor, un renommage ou l'ajout d'un paramètre pouvait rompre la cohérence de l'ensemble sans signal explicite. Le système continuait à fonctionner en apparence, mais avec un risque de comportement silencieusement incorrect. Ce type de situation est particulièrement problématique dans un contexte industriel, où la fiabilité de la chaîne numérique conditionne la confiance dans les outils.
+
+\subsection{Questions de recherche et verrous scientifiques}
+
+À partir de ce constat, le chapitre s'organise autour de trois questions de recherche :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item quelles propriétés un contrat d'interface doit-il porter pour permettre à un configurateur SQL et à un modèle CAO paramétrique de dialoguer sans ambiguïté ;
+\item dans quelle mesure un mécanisme de validation automatique peut-il détecter les ruptures de compatibilité avant l'exécution de la liaison ;
+\item comment introduire cette formalisation sans dégrader excessivement la maintenabilité opérationnelle du système.
+\end{itemize}
+
+Ces questions renvoient à deux verrous principaux. Le premier est un verrou sémantique : deux systèmes peuvent échanger des données correctement au niveau syntaxique tout en divergeant sur le sens réel des paramètres échangés. Le second est un verrou de gouvernance technique : même lorsque la structure est comprise, encore faut-il disposer d'un artefact commun permettant de piloter les évolutions sans dépendre uniquement de la mémoire des développeurs.
+
+\subsection{Hypothèses de travail}
+
+Les travaux présentés reposent sur trois hypothèses.
+
+\begin{itemize}[leftmargin=1.4cm]
+\item \textbf{H1 -- Hypothèse de faisabilité.} Il est possible de définir un méta-modèle de paramètres partagés, exprimé dans un format déclaratif versionnable, qui joue le rôle de contrat formel entre la base SQL et le modèle Inventor.
+\item \textbf{H2 -- Hypothèse de détectabilité.} Une part importante des ruptures de compatibilité peut être détectée automatiquement avant l'exécution de la liaison par un validateur comparant le contrat à l'état du schéma SQL et du modèle CAO.
+\item \textbf{H3 -- Hypothèse de proportionnalité.} Le coût d'introduction de ce contrat reste raisonnable au regard du coût des corrections manuelles et des erreurs silencieuses qu'il permet d'éviter.
+\end{itemize}
+
+\section{État de l'art}
+
+\subsection{Interopérabilité dans les systèmes d'information industriels}
+
+La littérature sur l'interopérabilité montre qu'échanger un fichier ne garantit pas, à lui seul, la bonne compréhension mutuelle entre systèmes. Chen et Vernadat rappellent que les barrières à l'interopérabilité sont à la fois conceptuelles, technologiques, organisationnelles et sémantiques \cite{chen2004}. Dans le cas étudié ici, le verrou dominant est clairement sémantique : le configurateur et le modèle Inventor manipulent des paramètres proches, mais ne disposent pas nativement d'un support commun qui décrive explicitement ce qu'ils signifient, comment ils doivent être typés et dans quel domaine ils restent valides.
+
+Panetto et Cecil montrent également que l'intégration d'entreprise ne peut être durable que si les échanges sont pensés au-delà du simple transport de données \cite{panetto2013}. Cette idée est centrale dans notre cas : un export de paramètres techniquement lisible ne suffit pas si les contraintes portées par ces paramètres ne sont pas formalisées.
+
+\subsection{Liaison entre configuration produit, PLM et CAO}
+
+Les travaux consacrés aux environnements PLM et à l'intégration d'outils de conception convergent vers un constat récurrent : les liaisons point à point sont rapides à mettre en place, mais deviennent fragiles dès que le nombre d'évolutions augmente \cite{chen2004}. Cette observation correspond étroitement à ce qui a été observé pendant l'alternance. L'intégration SQL -- Inventor fonctionnait dans les cas nominaux, mais elle restait vulnérable à des changements locaux insuffisamment formalisés.
+
+Dans un contexte industriel de taille raisonnable, il n'est pas toujours réaliste de déployer un écosystème PLM complet pour un besoin ciblé. En revanche, il devient pertinent d'introduire des mécanismes plus légers mais mieux explicités, capables de sécuriser les échanges essentiels.
+
+\subsection{Design by Contract, validation de schéma et versionnage}
+
+L'idée de formaliser explicitement les attentes entre composants n'est pas nouvelle. Bertrand Meyer a largement contribué à diffuser cette logique avec le \textit{Design by Contract}, en montrant qu'une interface fiable repose sur des préconditions, des postconditions et des invariants explicités \cite{meyer1997}. Sans transposer littéralement cette théorie au contexte CAO, elle fournit ici un cadre inspirant : un paramètre partagé ne devrait pas être échangé sans que soient clairement définis son identité, son type, son domaine de validité et sa destination.
+
+Les standards modernes de description de schéma, comme JSON Schema, fournissent un support pratique pour exprimer ce type de contrat de manière exécutable \cite{jsonschema2020}. Le versionnage sémantique propose, quant à lui, une convention utile pour interpréter la portée des évolutions d'un contrat (\textit{patch}, \textit{minor}, \textit{major}) \cite{semver2013}. Ces deux idées combinées ouvrent une piste pragmatique pour la sécurisation de la liaison étudiée.
+
+\section{Méthodes et matériaux}
+
+\subsection{Démarche générale}
+
+La méthode retenue s'organise en trois phases successives :
+
+\begin{enumerate}[leftmargin=1.4cm]
+\item caractériser les ruptures effectivement observées ou raisonnablement prévisibles dans la liaison SQL -- CAO ;
+\item concevoir un méta-modèle de paramètres partagés servant de contrat d'interface ;
+\item implémenter un protocole de validation exécutable et l'évaluer sur un cas représentatif.
+\end{enumerate}
+
+Le cas d'application principal retenu est la gamme Coveraccess, car elle constitue à la fois le premier terrain de développement du configurateur et une base suffisamment mature pour évaluer la démarche sur un périmètre maîtrisé.
+
+\subsection{Phase 1 -- Caractérisation des ruptures de compatibilité}
+
+L'analyse des incidents observés pendant les tests et la revue des points de couplage entre les deux systèmes ont conduit à distinguer quatre classes de rupture :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item \textbf{R1 -- Rupture nominale :} un paramètre est renommé dans l'un des systèmes sans mise à jour correspondante de l'autre ;
+\item \textbf{R2 -- Rupture de type :} une valeur est transmise avec un type incompatible avec celui attendu par le modèle cible ;
+\item \textbf{R3 -- Rupture de domaine :} une valeur est syntaxiquement correcte mais sort du domaine géométrique ou logique effectivement admis par le modèle ;
+\item \textbf{R4 -- Rupture de complétude :} un paramètre attendu par le modèle CAO est absent de l'export ou de la configuration transmise.
+\end{itemize}
+
+Cette taxonomie sert de grille d'évaluation. Une solution satisfaisante doit être capable de détecter ces ruptures avant la génération effective du modèle, ou au minimum de réduire fortement leur caractère silencieux.
+
+\subsection{Phase 2 -- Conception du méta-modèle de paramètres partagés}
+
+Le méta-modèle proposé définit un \textit{paramètre d'interface} comme un n-uplet :
+
+\[
+PI = (id, label, type, domaine, obligatoire, source_{SQL}, cible_{CAO}, dependances)
+\]
+
+où \textit{id} est l'identifiant canonique du paramètre, \textit{type} décrit le type attendu, \textit{domaine} explicite l'ensemble des valeurs admissibles, \textit{source\_SQL} indique la provenance côté configurateur, \textit{cible\_CAO} désigne la variable ou la propriété consommée côté Inventor, et \textit{dependances} recense les relations utiles avec d'autres paramètres.
+
+Le contrat d'interface a été représenté sous forme déclarative afin d'être versionnable, lisible et validable automatiquement. Le choix d'un format proche de JSON Schema s'explique par sa simplicité d'outillage et par sa capacité à documenter la structure tout en restant exécutable.
+
+\begin{lstlisting}[language=jsonmemoire,caption={Extrait simplifié d'un contrat d'interface pour la gamme Coveraccess}]
+{
+  "version_contrat": "1.0.0",
+  "gamme": "Coveraccess",
+  "parametres": [
+    {
+      "id": "largeur",
+      "label": "Largeur utile",
+      "type": "integer",
+      "domaine": { "min": 300, "max": 1600 },
+      "obligatoire": true,
+      "source_sql": "config.largeur_mm",
+      "cible_cao": "Largeur"
+    },
+    {
+      "id": "hauteur",
+      "label": "Hauteur utile",
+      "type": "integer",
+      "domaine": { "min": 300, "max": 1600 },
+      "obligatoire": true,
+      "source_sql": "config.hauteur_mm",
+      "cible_cao": "Hauteur"
+    }
+  ]
+}
+\end{lstlisting}
+
+\subsection{Phase 3 -- Protocole de validation}
+
+Le mécanisme de validation implémente trois passes avant l'exécution de la liaison :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item une \textbf{passe SQL}, qui vérifie l'existence des champs source, leur typage attendu et la cohérence générale du schéma avec le contrat ;
+\item une \textbf{passe CAO}, qui contrôle l'existence des cibles déclarées dans le modèle Inventor, leur compatibilité de type et la couverture des domaines de valeurs ;
+\item une \textbf{passe configuration}, qui vérifie que les valeurs effectivement transmises par l'utilisateur respectent les types, les domaines et les obligations de présence définis dans le contrat.
+\end{itemize}
+
+Le résultat de la validation est un rapport structuré indiquant, pour chaque paramètre, son statut et la classe de rupture éventuellement détectée. Cette logique de rapport est importante : il ne s'agit pas seulement de bloquer, mais aussi d'expliquer. La figure \ref{fig:pipeline-validation} schématise ce fonctionnement.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.45cm and 1.1cm]
+  \node[bloc] (schema) {Schéma SQL\\\scriptsize export du configurateur};
+  \node[bloc, below=of schema] (cao) {Paramètres CAO\\\scriptsize introspection Inventor};
+  \node[bloc, below=of cao] (config) {Configuration\\\scriptsize choix de l'utilisateur};
+
+  \node[blocaccent, right=1.4cm of cao, text width=3.1cm] (valid) {Validateur\\\scriptsize 3 passes : SQL, CAO, configuration};
+  \node[bloc, above=0.9cm of valid, text width=3.1cm] (contrat) {Contrat d'interface\\\scriptsize JSON versionné (semver)};
+
+  \node[bloc, right=1.4cm of valid, text width=3.0cm] (rapport) {Rapport JSON\\\scriptsize classes R1 à R4, diagnostic par paramètre};
+  \node[blocaccent, below=0.9cm of rapport, text width=3.0cm] (action) {Liaison exécutée\\\scriptsize ou bloquée avec explication};
+
+  \draw[fleche] (schema.east) -- (valid.west|-schema.east);
+  \draw[fleche] (cao) -- (valid);
+  \draw[fleche] (config.east) -- (valid.west|-config.east);
+  \draw[fleche] (contrat) -- node[etiquette, right]{référence} (valid);
+  \draw[fleche] (valid) -- (rapport);
+  \draw[fleche] (rapport) -- (action);
+\end{tikzpicture}
+\caption{Pipeline de validation : le contrat sert de référence commune aux trois passes}
+\label{fig:pipeline-validation}
+\end{figure}
+
+\subsection{Matériaux et environnement de test}
+
+L'implémentation expérimentale s'appuie sur les éléments suivants :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item la base SQL utilisée dans le configurateur produit ;
+\item un jeu de modèles paramétriques Autodesk Inventor utilisé pour la gamme Coveraccess ;
+\item un validateur Python autonome (\texttt{validateur.py}), sans dépendance externe, exploitant une représentation déclarative du contrat et générant un rapport JSON ;
+\item un contrat d'exemple appliqué à une gamme de type Coveraccess, décrivant cinq paramètres d'interface ;
+\item des exports simulés du schéma SQL et des paramètres Inventor, en versions nominale et dégradée ;
+\item une suite de tests reproductible (\texttt{run\_test\_suite.py}) composée d'un cas nominal et de trois cas invalides couvrant les classes de rupture R1 à R4 ;
+\item un script de liaison (\texttt{ouvrir\_modele.py}) qui remplace l'export simulé des paramètres CAO par une introspection réelle du modèle via l'API COM d'Inventor, et qui ajoute un contrôle post-exécution comparant la valeur demandée à la valeur effectivement appliquée.
+\end{itemize}
+
+Le prototype livré avec le mémoire se trouve dans le dossier \texttt{approfondissement\_scientifique}. Il contient le contrat d'interface, le validateur, les jeux d'entrée, la suite de tests et les rapports générés. Cette approche permet de ne pas limiter le chapitre à une réflexion théorique : le principe proposé est matérialisé par un outil exécutable. La partie validation est entièrement reproductible hors environnement industriel grâce aux exports simulés ; la version branchée sur l'API COM, elle, nécessite un poste Windows équipé d'Inventor et son déploiement en conditions réelles constitue l'étape suivante du projet.
+
+Le protocole d'évaluation reste volontairement limité, mais il est reproductible. Il ne s'agit pas d'une mesure statistique sur l'ensemble du système industriel, ni d'une mesure de performance temporelle en environnement réel. En revanche, il permet de vérifier de manière contrôlée que les classes de rupture définies dans la méthode sont bien détectées par le validateur. Le volume exact du banc d'essai est synthétisé dans le tableau \ref{tab:volume-prototype}.
+
+\begin{table}[H]
+\centering
+\caption{Volume du banc d'essai utilisé pour l'évaluation du prototype}
+\label{tab:volume-prototype}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.38\textwidth}X}
+\toprule
+Élément évalué & Volume retenu \\
+\midrule
+Contrat d'interface & 1 contrat JSON versionné, appliqué à une gamme de type Coveraccess \\
+Paramètres décrits & 5 paramètres d'interface : largeur, hauteur, classement feu, type de support et option joint \\
+Sources comparées & 2 exports simulés du schéma SQL (nominal et dégradé), 2 exports simulés des paramètres CAO (nominal et dégradé) et 2 configurations utilisateur (valide et dégradée) \\
+Scénarios de test & 4 scénarios : 1 nominal et 3 invalides \\
+Anomalies injectées & 9 anomalies réparties sur les classes R1 à R4 \\
+Sorties générées & 4 rapports JSON (un par scénario) et 1 rapport de synthèse de suite de tests \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Résultats}
+
+\subsection{Résultats de la suite de tests}
+
+La suite de tests a été exécutée sur quatre scénarios. Le premier scénario correspond à une configuration nominale. Les trois autres introduisent volontairement des ruptures : configuration invalide, schéma SQL incohérent et paramètres CAO non synchronisés. Au total, neuf anomalies ont été injectées dans les jeux de test, toutes associées à l'une des classes R1 à R4. Les résultats sont présentés dans le tableau \ref{tab:suite-tests}.
+
+\begin{table}[H]
+\centering
+\caption{Résultats de la suite de tests du validateur}
+\label{tab:suite-tests}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.28\textwidth}p{0.18\textwidth}p{0.18\textwidth}X}
+\toprule
+Scénario & Résultat attendu & Résultat obtenu & Erreurs détectées \\
+\midrule
+Cas nominal & Valide & Valide & 0 \\
+Configuration invalide & Invalide & Invalide & 4 erreurs : R2, R3, R4 \\
+Schéma SQL invalide & Invalide & Invalide & 2 erreurs : R1, R2 \\
+Paramètres CAO invalides & Invalide & Invalide & 3 erreurs : R1, R2, R3 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Le validateur distingue correctement le cas nominal des cas invalides. Il ne bloque pas la configuration valide, ce qui est essentiel pour l'acceptabilité opérationnelle de l'outil. À l'inverse, il détecte les neuf erreurs introduites volontairement dans les trois scénarios dégradés. Sur ce périmètre expérimental contrôlé, la couverture des anomalies injectées est donc complète ; cette observation doit toutefois être interprétée comme une validation fonctionnelle du prototype, et non comme un taux de détection généralisable à l'ensemble des cas industriels.
+
+\subsection{Couverture des classes de rupture}
+
+Les quatre classes de rupture définies dans la méthode sont représentées dans la suite de tests. Le rapport global généré par le script \texttt{run\_test\_suite.py} comptabilise neuf erreurs détectées au total.
+
+\begin{table}[H]
+\centering
+\caption{Synthèse des classes de rupture détectées par le prototype}
+\label{tab:classes-detectees}
+\begin{tabular}{lcc}
+\toprule
+Classe & Signification & Nombre d'occurrences détectées \\
+\midrule
+R1 & Source SQL ou cible CAO absente & 2 \\
+R2 & Type incompatible & 3 \\
+R3 & Domaine de valeur incohérent & 3 \\
+R4 & Paramètre obligatoire absent & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Ces résultats confirment l'intérêt du contrat d'interface comme mécanisme de contrôle préalable. Le prototype permet de détecter des anomalies qui, dans une liaison fondée uniquement sur des conventions implicites, pourraient passer inaperçues jusqu'à l'ouverture du modèle ou jusqu'à une phase de vérification tardive. L'intérêt du résultat ne réside donc pas seulement dans le nombre d'erreurs détectées, mais dans le fait que chaque erreur est rattachée à une classe explicite, ce qui facilite le diagnostic et l'action corrective.
+
+\subsection{Exemple de rapport généré}
+
+Le cas \texttt{sample\_configuration\_broken.json} illustre le type de sortie produit par le validateur. La configuration injecte volontairement quatre problèmes : une largeur hors domaine, une hauteur obligatoire absente, un classement feu non autorisé et une valeur booléenne transmise sous forme de chaîne de caractères.
+
+\begin{lstlisting}[language=jsonmemoire,caption={Extrait simplifié du rapport d'erreurs généré}]
+{
+  "ok": false,
+  "resume": {
+    "nb_parametres": 5,
+    "nb_erreurs": 4,
+    "classes_detectees": {
+      "R3": 2,
+      "R4": 1,
+      "R2": 1
+    }
+  }
+}
+\end{lstlisting}
+
+Le rapport est volontairement lisible par une personne technique : il ne se contente pas d'indiquer que la validation échoue, il précise quelle classe de rupture est concernée et sur quel paramètre. Cette exigence est importante pour que l'outil puisse être utilisé comme support de diagnostic et non comme une simple boîte noire.
+
+\subsection{Apport du versionnage sémantique}
+
+Au-delà de la seule détection, l'introduction d'un champ \texttt{version\_contrat} dans le contrat s'est révélée utile pour piloter les évolutions. Une convention inspirée du \textit{semantic versioning} permet de distinguer :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item une évolution \textbf{patch}, sans impact sur la compatibilité ;
+\item une évolution \textbf{minor}, lorsqu'un paramètre optionnel est ajouté ;
+\item une évolution \textbf{major}, lorsqu'un paramètre obligatoire est modifié, renommé ou voit son domaine évoluer.
+\end{itemize}
+
+Cette formalisation transforme le contrat en support de dialogue entre les acteurs de la base SQL et ceux de la CAO. Elle clarifie non seulement ce qui change, mais aussi la portée du changement.
+
+\section{Discussion}
+
+\subsection{Interprétation des résultats}
+
+Les résultats obtenus confirment que la formalisation d'un contrat d'interface améliore la robustesse de la liaison entre configurateur et CAO, au moins sur le périmètre démontré par le prototype. La suite de tests reste volontairement limitée, mais elle vérifie un point essentiel : les quatre classes de rupture définies dans la méthode sont détectables automatiquement à partir d'un contrat formalisé.
+
+L'intérêt principal de la démarche est double. D'une part, elle rend explicite une connaissance auparavant implicite : qu'est-ce qu'un paramètre partagé, d'où vient-il, comment doit-il être interprété et vers quelle cible est-il envoyé. D'autre part, elle transforme une fragilité silencieuse en objet observable et discuté, ce qui change profondément la capacité d'une équipe à maintenir son système.
+
+\subsection{Limites de l'approche}
+
+La première limite tient au périmètre de validation du prototype. La suite de tests s'appuie sur des exports simulés du schéma SQL et des paramètres CAO, ce qui garantit sa reproductibilité mais ne couvre pas tous les comportements d'un environnement réel. Le script de liaison fourni avec le prototype remplace déjà l'export simulé par une introspection COM du modèle Inventor ; en revanche, son comportement n'a pas encore pu être éprouvé sur l'ensemble des modèles de la gamme, ni sur la durée. La passe SQL, de son côté, reste à brancher sur une introspection directe du schéma SQL Server.
+
+La deuxième limite concerne les comportements propres au système cible. Si Autodesk Inventor accepte une valeur hors domaine puis la ramène silencieusement à une borne acceptable, un contrôle pré-exécution ne suffit pas. C'est pour cette raison que le script de liaison intègre un contrôle post-exécution comparant la valeur demandée à la valeur réellement appliquée dans le modèle. Ce mécanisme couvre le cas du clampage dimensionnel, mais d'autres comportements implicites du modeleur, comme la résolution d'équations entre paramètres, restent à caractériser.
+
+La troisième limite concerne la génération du contrat. Dans le cadre du prototype, celui-ci reste largement construit par formalisation manuelle. Cette étape est acceptable à petite échelle, mais deviendrait coûteuse si elle devait être répétée sans outillage d'assistance sur un grand nombre de gammes.
+
+\subsection{Apports industriels et scientifiques}
+
+Sur le plan industriel, le principal apport de cette démarche est de proposer une méthode légère, réaliste et directement actionnable pour améliorer la fiabilité d'une intégration existante sans exiger la refonte complète de l'écosystème. Sur le plan scientifique, l'intérêt du travail réside dans la transposition d'idées issues du génie logiciel vers un problème d'interopérabilité entre configuration produit et CAO paramétrique.
+
+Le chapitre montre en particulier qu'une fragilité fréquemment vécue comme un simple \og petit problème d'interface \fg{} renvoie en réalité à une question plus profonde de représentation partagée et de gouvernance de l'évolution.
+
+\subsection{Perspectives de recherche et d'industrialisation}
+
+Plusieurs prolongements apparaissent naturellement :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item éprouver le script de liaison en conditions réelles sur l'ensemble des modèles de la gamme Coveraccess, puis brancher la passe SQL sur une introspection directe du schéma SQL Server ;
+\item explorer une génération semi-automatique du contrat à partir du schéma SQL et d'une introspection des paramètres du modèle CAO ;
+\item généraliser l'approche à d'autres gammes puis, à terme, à d'autres interfaces de l'entreprise ;
+\item relier cette logique de contrat à une gouvernance plus large des données techniques, en lien avec les enjeux PLM et BIM.
+\end{itemize}
+
+\section{Conclusion}
+
+Ce chapitre d'approfondissement scientifique montre que la robustesse d'une liaison entre configurateur SQL et modeleur CAO ne dépend pas seulement de la qualité du code qui l'implémente. Elle dépend d'abord de la qualité de la représentation partagée entre les systèmes. En proposant un contrat d'interface explicite, versionné et validable, il devient possible de réduire fortement les ruptures silencieuses, tout en donnant aux équipes un support commun pour piloter les évolutions.
+
+La démarche proposée ne supprime pas toutes les limites du système actuel, mais elle fournit un cadre méthodologique solide et directement exploitable. Elle transforme une difficulté opérationnelle rencontrée pendant l'alternance en un objet de formalisation, d'évaluation et d'amélioration, ce qui constitue précisément l'ambition de ce chapitre scientifique.
+
+\begin{encadretitre}{À retenir de ce chapitre}
+Un contrat d'interface JSON versionné, un validateur à trois passes et une suite de tests reproductible matérialisent la démarche. Sur le banc d'essai, les neuf anomalies injectées sont toutes détectées et rattachées à leur classe de rupture (R1 à R4). La passe CAO dispose déjà d'une version branchée sur l'API COM d'Inventor ; son déploiement en conditions réelles constitue la prochaine étape.
+\end{encadretitre}

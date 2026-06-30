@@ -1,0 +1,145 @@
+\chapter{Présentation de l'alternance}
+
+\section{Contexte chez Souchier-Boullet}
+
+Mon arrivée chez Souchier-Boullet a coïncidé avec un besoin clair de structuration et de continuité dans certains outils techniques. L'entreprise disposait d'une expertise produit solide, de documents de référence détaillés et d'un environnement de conception déjà riche, mais une partie de la logique de configuration restait encore portée par des traitements manuels, des fichiers intermédiaires et des habitudes expertes difficiles à partager rapidement.
+
+Dans ce contexte, l'alternance m'a offert un terrain d'apprentissage particulièrement complet. J'ai pu observer la vie d'un produit sous plusieurs angles : son modèle 3D, sa traduction documentaire, sa configuration commerciale, ses contraintes réglementaires, son adaptation à la fabrication et sa circulation entre services. Cette transversalité a été l'un des fils directeurs de la mission.
+
+\section{Missions confiées}
+
+\subsection{Mission 1 : Développement d'un configurateur SQL}
+
+La mission principale de mon alternance a consisté à développer un configurateur produit reposant sur une base de données SQL et sur une interface utilisateur réalisée dans Infor Design Studio. L'enjeu était de faire évoluer un mode de travail historiquement fondé sur la lecture manuelle de procès-verbaux, de tableaux Excel et de règles métier dispersées vers une logique structurée, où le travail accompli sur une gamme profite aux suivantes.
+
+Concrètement, cette mission supposait plusieurs chantiers :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item analyser les documents techniques de référence, notamment les PV feu et les fichiers de travail existants ;
+\item traduire les règles métier en tables, relations, contraintes et procédures SQL ;
+\item concevoir une interface suffisamment claire pour être utilisée sans devoir mobiliser en permanence l'expertise implicite des développeurs ;
+\item générer des sorties exploitables, comme des nomenclatures, des dimensions cohérentes et, à terme, des liens avec les modèles 3D.
+\end{itemize}
+
+Cette mission s'est construite de manière incrémentale. La première année a permis de poser la méthode sur la gamme Coveraccess, puis de l'étendre à d'autres produits. La deuxième année a consolidé l'approche en l'élargissant à des gammes plus complexes et en ouvrant la voie à l'intégration CAO.
+
+\subsection{Mission 2 : Optimisation des modèles 3D sur Autodesk Inventor}
+
+En parallèle, j'ai travaillé sur les modèles 3D développés sous Autodesk Inventor. Cette mission était directement reliée aux besoins du terrain. Elle consistait à traiter des fiches de modification remontées par la production ou par le bureau d'études, à corriger certains écarts entre modèle numérique et réalité de fabrication, et à améliorer la cohérence globale des assemblages.
+
+Ce travail demandait de naviguer entre plusieurs niveaux d'analyse. Il fallait comprendre l'origine du problème, identifier dans le modèle les paramètres ou composants concernés, mesurer l'impact de la modification sur les autres vues ou documents associés, puis documenter la correction. Ce volet m'a permis de développer une compréhension concrète des produits et de leur comportement paramétrique, compréhension qui a ensuite nourri la construction du configurateur.
+
+\section{Périmètre de responsabilité et niveau d'autonomie}
+
+Pour évaluer honnêtement ma contribution, il faut distinguer ce que j'ai réalisé en autonomie de ce qui s'est construit avec l'aide des équipes. Cette distinction me semble plus utile qu'un inventaire de tâches.
+
+Ce que j'ai porté seul : la conception de l'architecture SQL (découpage des tables, choix de généricité, règles de validation), le développement complet de l'interface Design Studio, l'écriture des procédures et requêtes, ainsi que le script de liaison avec Inventor. Sur ces sujets, mon tuteur fixait le cap et validait les jalons, mais les choix techniques et leur implémentation m'appartenaient. C'est aussi moi qui ai proposé de structurer le projet en noyau générique réutilisable plutôt que de développer un configurateur par gamme, ce qui a orienté toute la suite.
+
+Ce qui s'est construit avec les équipes : l'interprétation des PV feu et des règles métier. Sur ce terrain, je n'avais ni la légitimité ni l'expérience pour trancher seul. Chaque règle ambiguë était discutée avec les ingénieurs R\&D, parfois confrontée aux contraintes du bureau d'études ou aux retours de production. J'ai vite compris qu'une règle mal comprise puis codée avec assurance est plus dangereuse qu'une règle absente : elle donne l'illusion de la fiabilité.
+
+De même, côté CAO, les fiches de modification m'arrivaient cadrées par la production ou le bureau d'études ; mon autonomie portait sur le diagnostic dans le modèle et la manière de corriger sans fragiliser le reste de l'assemblage, pas sur la décision de modifier.
+
+\begin{itemize}[leftmargin=1.4cm]
+\item Analyse et formalisation des règles techniques avant intégration en base, en binôme avec les experts métier.
+\item Conception en autonomie d'une architecture SQL réutilisable sur plusieurs gammes.
+\item Développement complet de l'interface et des règles, avec validation régulière par les futurs utilisateurs.
+\item Mise en place de la liaison configuration--CAO et identification de ses limites de robustesse.
+\item Documentation systématique des difficultés rencontrées pour en faire des pistes d'amélioration exploitables.
+\end{itemize}
+
+\section{Importance stratégique des missions}
+
+\subsection{Optimisation de la conception 3D}
+
+La qualité d'un modèle 3D ne se juge pas à l'écran. Dans un contexte industriel, un modèle sert à produire des plans, à générer des nomenclatures, à vérifier des interfaces et à formaliser une intention de conception. Un modèle instable, mal paramétré ou insuffisamment documenté peut rapidement devenir une source de pertes de temps et de malentendus.
+
+Le travail de maintenance et d'amélioration mené sous Inventor contribuait donc à sécuriser la base technique sur laquelle s'appuient ensuite le bureau d'études, la production et, indirectement, le configurateur. Il s'agissait d'un levier discret mais structurant.
+
+\subsection{Développement du configurateur SQL}
+
+Le configurateur SQL portait, quant à lui, une ambition plus visible de transformation numérique. En centralisant la logique produit dans une base relationnelle, l'entreprise pouvait :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item limiter la dépendance à des fichiers intermédiaires peu robustes ;
+\item rendre les règles métier plus lisibles et plus testables ;
+\item réduire le risque d'erreur lors de la préparation d'une configuration ;
+\item préparer l'extension du système à plusieurs gammes de produits ;
+\item créer une base exploitable pour d'autres interfaces et d'autres usages.
+\end{itemize}
+
+La valeur stratégique du configurateur ne réside donc pas uniquement dans le gain de temps immédiat. Elle tient aussi à sa capacité à transformer des connaissances techniques diffuses en un système structuré, partageable et évolutif.
+
+\section{Objectifs détaillés}
+
+\subsection{Objectifs pour la conception 3D}
+
+Pour la partie CAO, les objectifs fixés pouvaient être résumés de la manière suivante :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item assurer la cohérence entre modèles 3D, plans et réalité de fabrication ;
+\item améliorer la stabilité paramétrique des assemblages ;
+\item documenter les modifications réalisées afin de faciliter leur traçabilité ;
+\item consolider une base de modèles suffisamment propre pour pouvoir, à terme, dialoguer avec des outils de configuration externes.
+\end{itemize}
+
+Ces objectifs étaient à la fois techniques et méthodologiques. Corriger un modèle ne suffisait pas ; il fallait le faire de manière compréhensible, reproductible et acceptable pour les équipes qui l'utilisent après coup.
+
+\subsection{Objectifs pour le configurateur SQL}
+
+Pour la partie configurateur, les objectifs étaient plus larges, car ils touchaient à la structure même de la donnée technique dans l'entreprise :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item concevoir une architecture de base de données capable de représenter plusieurs familles de produits ;
+\item traduire des règles métier complexes en logique relationnelle et procédurale ;
+\item fournir une interface simple d'usage pour guider l'utilisateur dans le choix de configurations valides ;
+\item automatiser les calculs et les compatibilités les plus répétitifs ;
+\item préparer la connexion avec Autodesk Inventor afin de prolonger la configuration vers la CAO paramétrique.
+\end{itemize}
+
+\section{Plan de route, méthodes de travail et parties prenantes}
+
+\subsection{Analyse du besoin et cadrage initial}
+
+Le cadrage du projet ne s'est pas fait en une seule réunion formelle. Il s'est construit progressivement, à travers l'observation des pratiques existantes, l'analyse des documents, les échanges avec les ingénieurs R\&D et les retours des services concernés. Cette phase a été essentielle, car elle a permis d'éviter un écueil fréquent : développer trop vite un outil techniquement satisfaisant mais mal aligné avec la réalité métier.
+
+L'analyse du besoin a mis en évidence plusieurs attentes récurrentes : sécuriser les choix de configuration, éviter les relectures intégrales de documents normatifs, réduire la dépendance à certains fichiers Excel historiques, et faciliter la réutilisation du travail déjà accompli lorsqu'une nouvelle gamme est abordée.
+
+\subsection{Rétroplanning et jalons principaux}
+
+Le travail s'est articulé autour d'une logique incrémentale. Plutôt que de viser d'emblée une solution exhaustive sur toutes les gammes, la démarche a consisté à construire un noyau robuste sur un premier produit, puis à l'étendre de manière contrôlée.
+
+\begin{table}[H]
+\centering
+\caption{Jalons principaux de l'alternance}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.17\textwidth}X}
+\toprule
+Période & Objectif principal \\
+\midrule
+Phase 1 & Prise en main de l'environnement, lecture des PV feu, compréhension des modèles 3D et des besoins R\&D. \\
+Phase 2 & Structuration des données de la gamme Coveraccess, conception de la base SQL et premiers développements d'interface. \\
+Phase 3 & Mise en place des règles métier, génération des sorties utiles et validation interne du premier configurateur. \\
+Phase 4 & Extension de la méthode à d'autres gammes : DOORSLIDE en A4, puis DOORSTEEL, PHONI LUX-AIR-PASS, ONYX, MULTIDOOR, ScreenPass et CURTEX V2 en A5. \\
+Phase 5 & Développement de la liaison entre le configurateur SQL et Autodesk Inventor, tests, ajustements et formalisation du retour d'expérience. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Organisation pratique du travail}
+
+L'organisation du travail a reposé sur une logique d'itérations courtes plutôt que sur un développement entièrement figé dès le départ. Pour chaque gamme, je partais d'abord des documents disponibles et des besoins exprimés, puis je construisais une première représentation des paramètres et des règles. Cette représentation était ensuite confrontée aux retours du service R\&D, du bureau d'études ou des utilisateurs concernés avant d'être stabilisée dans la base SQL et dans l'interface.
+
+Cette méthode m'a permis de limiter deux risques : d'une part, coder trop tôt une règle mal comprise ; d'autre part, construire une architecture théoriquement propre mais difficile à utiliser. Elle m'a également obligé à documenter progressivement les décisions prises, car une règle de configuration n'a de valeur que si l'on peut comprendre plus tard son origine, son périmètre et ses limites.
+
+\subsection{Outils et équipes concernées}
+
+Les développements ont mobilisé plusieurs outils complémentaires :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item Autodesk Inventor pour la modélisation 3D paramétrique ;
+\item SQL Server et les outils associés pour la structuration des données et l'implémentation des règles ;
+\item Infor Design Studio pour l'interface utilisateur du configurateur ;
+\item Excel comme support intermédiaire lors des premières phases de transcription ;
+\item des scripts Python pour certaines tâches d'automatisation, notamment dans la liaison avec Inventor.
+\end{itemize}
+
+Plusieurs équipes ont été impliquées à différents niveaux : le service R\&D comme pilote technique, le bureau d'études pour les contraintes de conception, la production pour les retours d'usage et les fiches de modification, et le service commercial pour la lisibilité des configurations et des variantes proposées. Cette multiplicité d'interlocuteurs a renforcé la nécessité de produire des outils explicites et des résultats compréhensibles au-delà du seul cercle des développeurs.

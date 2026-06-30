@@ -1,0 +1,123 @@
+\chapter{Bilan de l'alternance}
+
+\section{Compétences développées et acquises}
+
+\subsection{Compétences techniques}
+
+Cette alternance de deux ans au sein du service R\&D de Souchier-Boullet m'a permis de développer un ensemble de compétences techniques directement mobilisables dans un contexte d'ingénierie industrielle.
+
+En modélisation 3D, j'ai progressé dans la maîtrise d'Autodesk Inventor sur des environnements paramétriques complexes. Travailler sur des iParts, des iAssemblies et des assemblages multi-niveaux dans un contexte de fabrication réelle m'a appris à raisonner sur la robustesse d'un modèle autant que sur sa précision géométrique : un modèle industriel vaut autant par sa maintenabilité que par sa fidélité.
+
+Côté bases de données, j'ai acquis une compétence opérationnelle en conception relationnelle sous SQL Server : schémas normalisés, procédures stockées, règles de validation et de filtrage dynamique, gestion des dépendances entre tables. Au-delà du langage lui-même, c'est l'exercice de traduction qui m'a formé : prendre une logique métier complexe, parfois ambiguë, et la transformer en une structure formelle que l'on peut vérifier.
+
+L'interopérabilité logicielle, enfin, a été une découverte. Travailler avec l'API COM d'Autodesk Inventor via Python m'a confronté à des problèmes que je n'avais jamais rencontrés en cours : gestion des types entre systèmes hétérogènes, conventions de nommage, erreurs silencieuses. C'est cette expérience qui a fait naître le sujet scientifique du chapitre d'approfondissement.
+
+\subsection{Compétences transverses}
+
+Au-delà des compétences techniques, cette alternance a renforcé des aptitudes plus transversales, essentielles dans un métier d'ingénieur.
+
+La capacité à analyser et formaliser un besoin a été l'une des plus sollicitées. Dans un environnement industriel, les besoins sont rarement exprimés sous forme de spécification formelle. Il faut savoir questionner, observer les pratiques, identifier les frictions réelles et reformuler avant de concevoir. Cette posture d'écoute active a été indispensable pour ne pas développer des solutions techniquement correctes mais mal alignées avec les usages réels.
+
+La gestion de l'incertitude et de l'itération a également été au cœur de la mission. Le développement incrémental, la confrontation régulière des résultats aux parties prenantes et la capacité à ajuster sans repartir de zéro sont des compétences qui ne s'apprennent pas en cours mais dans la pratique réelle de projets.
+
+Enfin, la communication interservices a été un apprentissage constant. Traduire des décisions techniques en termes compréhensibles par le bureau d'études, le service commercial ou la production, et inversement, transformer des retours terrain en exigences de données, est une compétence fondamentale pour tout ingénieur travaillant à l'interface de plusieurs métiers.
+
+\subsection{Compétences identifiées comme insuffisantes}
+
+L'expérience a aussi révélé des lacunes que je souhaite combler à court terme.
+
+La gestion de projet structurée a été peu formalisée dans mon travail : les jalons étaient clairs, mais la documentation de pilotage (risques, livrables, indicateurs) aurait pu être plus explicite dès le départ. Une maîtrise plus approfondie des méthodes agiles et de leur adaptation à des projets de type R\&D industriel serait utile.
+
+La maîtrise des outils de versionnage de code (Git) a progressé, mais reste perfectible. Pour des projets de ce type mêlant SQL, Python et interfaces, la gestion des versions et la collaboration en équipe de développement auraient bénéficié d'un outillage plus systématique.
+
+\section{Lien avec la majeure Modélisation \& Numérique}
+
+\subsection{Apports directs des enseignements}
+
+La majeure \textit{Modélisation \& Numérique} a fourni des fondements théoriques et méthodologiques directement utiles dans l'alternance. Plusieurs enseignements ont trouvé une application concrète.
+
+Les cours de modélisation des systèmes et d'architecture logicielle ont fourni le cadre conceptuel pour aborder la conception d'une base de données non comme un simple stockage de données, mais comme un modèle formel du domaine métier. La distinction entre données descriptives, données de contrainte et données calculées, qui structure l'architecture SQL du configurateur, découle directement d'une réflexion sur la modélisation du système produit.
+
+Les enseignements de bases de données relationnelles et de SQL avancé ont évidemment fourni les fondations techniques. Mais c'est la mise en pratique sur un cas industriel réel, avec des règles métier complexes, des dépendances imbriquées et des exigences de performance, qui a donné sa pleine mesure à ces acquis.
+
+Les cours traitant de l'interopérabilité et des systèmes d'information d'entreprise ont éclairé les enjeux de la liaison SQL--CAO d'une façon que l'expérience seule n'aurait pas permis de formaliser aussi clairement. C'est cette formation qui m'a conduit à cadrer le problème observé en termes de contrat d'interface et de niveaux de compatibilité, plutôt que de le traiter uniquement comme un bug de programmation.
+
+\subsection{Ce que l'alternance apporte en retour à la formation}
+
+Réciproquement, l'expérience industrielle a enrichi ma compréhension de certains concepts théoriques. La question de la robustesse d'un modèle paramétrique — posée dans les cours de façon abstraite — prend une tout autre dimension lorsqu'on voit un assemblage Inventor se comporter différemment selon l'ordre de résolution des contraintes, ou lorsqu'un export de paramètres est silencieusement ignoré par le logiciel cible.
+
+De même, les notions d'interopérabilité sémantique, qui peuvent sembler abstraites dans un contexte académique, deviennent immédiatement concrètes lorsqu'un paramètre nommé \texttt{Largeur} dans la base SQL n'est pas reconnu par Inventor qui attendait \texttt{largeur\_mm}. L'alternance a transformé des concepts en problèmes réels, ce qui en clarifie considérablement la portée.
+
+\section{Difficultés rencontrées et solutions apportées}
+
+Avant de détailler les difficultés une par une, je veux situer leur niveau. Aucune d'entre elles ne relevait d'un problème d'école avec une solution connue : il s'agissait à chaque fois de situations où plusieurs réponses étaient possibles, où l'information était incomplète et où une mauvaise décision ne se voyait pas immédiatement. C'est cette combinaison, plus que la technicité brute de chaque brique, qui a fait la vraie difficulté du projet pour un alternant arrivé en quatrième année.
+
+\subsection{Hétérogénéité des sources de données}
+
+La première difficulté majeure a été de travailler à partir de sources hétérogènes : procès-verbaux feu en PDF, tableaux Excel aux structures variables, modèles Inventor dans des états de maturité différents et pratiques internes non documentées. Il n'existait pas de base unique de référence : chaque information devait être vérifiée, croisée et validée avant d'être traduite en règle.
+
+La solution adoptée a été de créer une phase intermédiaire systématique : avant toute saisie dans la base SQL, les règles étaient mises à plat dans un tableau de travail commun soumis à relecture. Cette étape a ralenti le démarrage, mais a fortement réduit les erreurs d'interprétation et les reprises.
+
+\subsection{Fragilité de la liaison SQL--CAO}
+
+La deuxième difficulté structurelle a été la liaison entre le configurateur et Autodesk Inventor. Les premiers tests ont montré que le système fonctionnait dans les cas nominaux, mais qu'une modification mineure d'un paramètre ou d'un nommage dans l'un des deux systèmes pouvait provoquer un comportement incorrect sans message d'erreur explicite.
+
+La solution a d'abord été empirique : renforcement des tests, documentation des conventions de nommage, mise en place de vérifications manuelles avant ouverture du modèle. Mais c'est cette difficulté qui a conduit à la réflexion formalisée dans le chapitre d'approfondissement scientifique, dont le contrat d'interface constitue la réponse méthodologique.
+
+\subsection{Généricité versus lisibilité de l'architecture}
+
+Concevoir une architecture SQL réutilisable sur plusieurs gammes très différentes a constamment soulevé la tension entre généricité et compréhensibilité. Un modèle trop abstrait est difficile à maintenir ; un modèle trop spécifique est difficile à étendre.
+
+La solution a été de recourir à une architecture en couches : un noyau générique partagé par toutes les gammes, enrichi de modules spécifiques par produit. Cette logique de généralisation/spécialisation, issue de la programmation orientée objet, s'est révélée directement transposable à la modélisation relationnelle.
+
+\section{Succès, bonnes pratiques et axes d'amélioration}
+
+\subsection{Ce qui a bien fonctionné}
+
+La démarche incrémentale a été le principal facteur de succès. En partant d'un produit pilote bien maîtrisé avant de s'étendre, l'architecture a pu être éprouvée progressivement et les erreurs de conception ont été détectées avant de devenir structurelles.
+
+La documentation progressive des décisions de conception a également été un atout. Chaque choix d'architecture important a été consigné avec sa justification, ce qui a facilité les discussions avec les équipes et réduit la charge de maintenance.
+
+Le tableau des contributions personnelles présenté en introduction a aussi joué un rôle inattendu : le tenir à jour m'a obligé à me demander régulièrement ce que mon travail apportait réellement, au-delà des tâches quotidiennes.
+
+\subsection{Axes d'amélioration}
+
+Plusieurs points auraient pu être améliorés. La rédaction des tests aurait gagné à être plus systématique dès le début, plutôt que de rester informelle dans les premières phases. Un dispositif de test formel, même léger, aurait accéléré la détection de certaines régressions lors de l'extension à de nouvelles gammes.
+
+La liaison avec Autodesk Inventor aurait bénéficié d'une contractualisation explicite dès le départ, sans attendre que les problèmes se manifestent. C'est précisément l'enseignement central du chapitre scientifique : formaliser les interfaces avant de les implémenter, et non après que les fragilités ont été observées.
+
+\section{Analyse critique : préconisations et engagement DD-RSE}
+
+\subsection{Préconisations pour la suite}
+
+Plusieurs pistes d'amélioration ressortent de ce bilan.
+
+La première concerne l'industrialisation du contrat d'interface SQL--CAO. Le prototype développé dans le chapitre scientifique comprend déjà un script de liaison capable d'interroger le modèle Inventor par introspection COM ; l'étape suivante consiste à le déployer sur les postes du service, à brancher la passe SQL sur le schéma réel de la base et à intégrer la validation pré-exécution dans le flux de travail quotidien des équipes R\&D.
+
+La deuxième porte sur la génération semi-automatique du contrat à partir du schéma SQL et d'une introspection du modèle Inventor. Cette automatisation réduirait le coût de maintenance du contrat et le rendrait réaliste à l'échelle de toutes les gammes.
+
+La troisième concerne l'ouverture vers les outils BIM. Les données structurées dans la base SQL constituent un patrimoine qui pourrait, à terme, être exporté dans des formats interopérables avec les maquettes numériques des projets. C'est une direction stratégique qui renforcerait la valeur commerciale des produits Souchier-Boullet dans les projets de construction modernes.
+
+\subsection{Engagements DD-RSE personnels}
+
+Sur le plan du développement durable, cette alternance m'a sensibilisé à l'impact indirect que peut avoir la qualité de l'ingénierie numérique sur l'empreinte environnementale d'une activité industrielle. Réduire les erreurs de configuration, c'est aussi réduire les reprises, les rebuts et les transports associés. Structurer la donnée technique, c'est faciliter la maintenance sur longue durée et contribuer à la durabilité des produits.
+
+Je m'engage, dans ma pratique professionnelle future, à intégrer systématiquement ces dimensions dans la conception des outils : penser la maintenabilité comme un enjeu de durabilité, documenter pour réduire la dépendance aux experts, concevoir des architectures réutilisables pour éviter les redéveloppements inutiles.
+
+\section{Plan de carrière}
+
+\subsection{Positionnement actuel et acquis de l'alternance}
+
+À l'issue de cette alternance, j'ai développé un profil à la croisée de trois domaines : la structuration de données techniques, la modélisation CAO paramétrique et l'interopérabilité des systèmes d'information industriels. Ce positionnement est relativement rare et répond à des besoins croissants dans les entreprises industrielles en cours de transformation numérique.
+
+\subsection{Objectifs à court terme (1 à 3 ans)}
+
+À court terme, je souhaite occuper un poste d'ingénieur en systèmes d'information industriels ou en ingénierie des données produit, de préférence dans un environnement industriel où la donnée technique, la CAO et la configuration produit sont des enjeux centraux. Ce type de poste me permettrait d'approfondir les compétences acquises pendant l'alternance, notamment sur les sujets d'interopérabilité, de PLM et de gestion du cycle de vie produit.
+
+Je souhaite également renforcer ma maîtrise des approches BIM/PLM et des standards d'échange de données (IFC, STEP) afin d'être en mesure de contribuer à des projets d'intégration numérique plus larges.
+
+\subsection{Objectifs à moyen terme (3 à 7 ans)}
+
+À moyen terme, mon ambition est de prendre des responsabilités plus larges sur des projets de transformation numérique industrielle, potentiellement en portant une démarche de type Product Data Management ou en participant au déploiement de solutions PLM à l'échelle d'une organisation. Je suis également intéressé par les problématiques de standardisation des échanges de données entre acteurs du bâtiment, où la convergence entre ingénierie produit, BIM et données réglementaires représente un terrain d'innovation particulièrement stimulant.
+
+Une évolution vers des fonctions de conseil ou d'architecture de systèmes d'information dans un cabinet spécialisé en transformation industrielle est une piste que je n'exclus pas, une fois acquise une expérience opérationnelle suffisante.

@@ -1,0 +1,13 @@
+{
+  "source": "SQL Server (export simule du schema)",
+  "date_export": "2026-05-28",
+  "tables": {
+    "config": {
+      "largeur_mm": { "type": "int" },
+      "hauteur_mm": { "type": "int" },
+      "classement_feu": { "type": "nvarchar" },
+      "type_support": { "type": "nvarchar" },
+      "option_joint": { "type": "bit" }
+    }
+  }
+}

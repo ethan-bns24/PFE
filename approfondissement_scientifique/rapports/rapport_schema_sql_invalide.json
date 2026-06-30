@@ -1,0 +1,29 @@
+{
+  "ok": false,
+  "contrat": {
+    "gamme": "Coveraccess",
+    "version_contrat": "1.0.0"
+  },
+  "resume": {
+    "nb_parametres": 5,
+    "nb_erreurs": 2,
+    "classes_detectees": {
+      "R1": 1,
+      "R2": 1
+    }
+  },
+  "erreurs": [
+    {
+      "parametre": "largeur",
+      "classe": "R1",
+      "passe": "sql",
+      "message": "Le champ source 'config.largeur_mm' est introuvable dans le schema SQL exporte."
+    },
+    {
+      "parametre": "option_joint",
+      "classe": "R2",
+      "passe": "sql",
+      "message": "Le champ 'config.option_joint' est de type SQL 'nvarchar' alors que le contrat attend 'boolean'."
+    }
+  ]
+}

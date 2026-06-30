@@ -1,0 +1,11 @@
+{
+  "gamme": "Coveraccess",
+  "reference": "CFG-2026-0666",
+  "commentaire": "Scenario de test : largeur hors domaine (R3), hauteur obligatoire absente (R4), classement feu non autorise (R3), option_joint transmise en chaine de caracteres (R2).",
+  "valeurs": {
+    "largeur": 2500,
+    "classement_feu": "EI240",
+    "type_support": "beton",
+    "option_joint": "true"
+  }
+}

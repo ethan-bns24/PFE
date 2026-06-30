@@ -1,0 +1,68 @@
+\chapter{Introduction}
+
+\section{Contexte de l'alternance}
+
+Souchier-Boullet conçoit et fabrique des produits de compartimentage coupe-feu et de désenfumage. Ce sont des produits que l'on ne remarque pas dans un bâtiment, mais dont la conformité conditionne tout : sans procès-verbal d'essai valide, un produit ne peut tout simplement pas être vendu ni prescrit sur un projet. J'ai effectué mon alternance dans ce contexte, au sein du service Recherche \& Développement, pendant deux ans.
+
+Ce qui m'a frappé en arrivant, c'est que la difficulté n'était pas tant la technique produit elle-même que la manière dont le savoir circulait. Les règles qui déterminent si une configuration est valide existaient bien, mais elles étaient réparties entre des procès-verbaux feu de plusieurs dizaines de pages, des fichiers Excel historiques et l'expérience des ingénieurs en place. Configurer un produit correctement demandait de savoir où chercher, et surtout de savoir quoi chercher. Tant que les gammes restaient simples et les équipes stables, cela fonctionnait. Mais la multiplication des variantes rendait ce mode de travail de plus en plus fragile.
+
+Mes missions se sont construites autour de ce constat. D'un côté, je maintenais et améliorais des modèles 3D sous Autodesk Inventor, au contact direct des demandes de la production et du bureau d'études. De l'autre, je développais des configurateurs produit appuyés sur une base SQL, pour transformer ces règles dispersées en une logique outillée. Les deux missions paraissaient distinctes au départ ; elles ont fini par se rejoindre lorsque nous avons relié le configurateur aux modèles 3D.
+
+\section{Objectifs et enjeux}
+
+L'objectif n'était pas de produire des développements techniques isolés, mais des outils que les équipes utiliseraient réellement. Cette nuance a orienté la plupart de mes choix pendant deux ans, et elle recouvre plusieurs enjeux distincts.
+
+Le premier était la fiabilisation des données techniques. Un procès-verbal feu contient des dimensions limites, des combinaisons autorisées, des conditions de mise en \oe uvre. Tout y est, mais rien n'y est directement exploitable par un outil : il faut extraire, interpréter, croiser avec d'autres documents. Transformer cette matière en structure relationnelle, c'était capitaliser un savoir qui n'existait jusque-là qu'à l'état dispersé.
+
+Le deuxième concernait les erreurs et les reprises. Quand chaque configuration repose sur la lecture humaine de documents longs, le risque d'oubli ou de mauvaise interprétation est mécanique, même avec des personnes expérimentées. Je ne cherchais pas à remplacer l'expertise métier : l'idée était de sécuriser ce qui est répétitif pour que les ingénieurs gardent leur temps pour les vrais arbitrages techniques.
+
+Le troisième était l'interopérabilité. Un configurateur isolé aurait eu un intérêt limité. Pour avoir de la valeur, il devait dialoguer avec ce qui existait déjà : Autodesk Inventor, les documents techniques, les processus du service R\&D.
+
+Il y avait enfin un enjeu plus personnel : apprendre à travailler comme ingénieur dans un environnement où chaque décision se négocie entre la rigueur technique, les attentes des utilisateurs et les délais industriels. C'est moins confortable que de coder seul dans son coin, mais c'est là que j'ai le plus appris.
+
+\section{Problématique}
+
+La problématique centrale qui a guidé ce mémoire peut être formulée ainsi :
+
+\begin{encadretitre}{Problématique du mémoire}
+\large
+Comment améliorer l'intégration entre la structuration des données techniques sous SQL et la conception 3D paramétrique sous Autodesk Inventor, afin de rendre plus fiable et plus maintenable la configuration des produits de compartimentage chez Souchier-Boullet ?
+\end{encadretitre}
+
+Cette question générale se décline en plusieurs interrogations plus opérationnelles :
+
+\begin{itemize}[leftmargin=1.4cm]
+\item comment transformer des règles métier issues de documents techniques en une logique relationnelle exploitable et évolutive ;
+\item comment faire du configurateur un véritable outil de travail partagé entre R\&D, bureau d'études et fonctions commerciales ;
+\item comment relier proprement l'univers des données de configuration à celui de la CAO paramétrique sans créer une dépendance trop fragile entre les systèmes.
+\end{itemize}
+
+Le mémoire répond à ces questions à la fois par le retour d'expérience d'une alternance menée sur deux ans et par un approfondissement scientifique centré sur la robustesse de la liaison entre configurateur SQL et modeleur CAO.
+
+\section{Synthèse des apports personnels}
+
+Avant de détailler le contexte et le déroulement des missions, je préfère annoncer dès l'introduction ce que mon travail a concrètement apporté à l'entreprise. Mon rôle n'a pas consisté à exécuter des tâches déjà cadrées : le projet de configurateur n'existait pas sous sa forme actuelle quand je suis arrivé, et une partie de mon travail a justement été de lui donner une structure, une méthode et un périmètre.
+
+\begin{table}[H]
+\centering
+\caption{Synthèse des contributions personnelles de l'alternance}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.25\textwidth}X X}
+\toprule
+Contribution & Travail réalisé & Valeur créée pour l'entreprise \\
+\midrule
+Structuration des règles métier & Analyse de PV feu, formalisation des paramètres et traduction des contraintes en tables SQL. & Réduction de la dépendance aux fichiers dispersés et meilleure capitalisation du savoir technique. \\
+Développement du configurateur & Conception de l'architecture SQL, implémentation des règles et construction de l'interface Design Studio. & Outil plus fiable pour guider la configuration et limiter les erreurs de sélection. \\
+Extension multi-gammes & Adaptation de la méthode à Coveraccess et DOORSLIDE en A4, puis à DOORSTEEL, PHONI LUX-AIR-PASS, ONYX, MULTIDOOR, ScreenPass et CURTEX V2 en A5. & Validation d'une logique réutilisable, et non d'un développement limité à un seul produit. \\
+Optimisation CAO & Traitement de fiches de modification, amélioration de modèles Inventor et clarification de certains assemblages. & Meilleure cohérence entre conception numérique, plans et réalité de fabrication. \\
+Intégration SQL -- Inventor & Mise en place d'une liaison permettant de rapprocher la configuration métier et le modèle 3D. & Première étape vers une continuité numérique plus robuste entre données et CAO. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Ces apports seront détaillés dans les chapitres suivants. Ils montrent que l'alternance a eu une double portée : répondre à des besoins opérationnels immédiats et poser un socle méthodologique pour des évolutions futures.
+
+\section{Structure du mémoire}
+
+Le document s'organise en plusieurs chapitres complémentaires. Le deuxième chapitre positionne l'alternance dans son environnement sectoriel et présente la problématique dans sa dimension industrielle. Le troisième chapitre décrit le cadre de travail, les missions confiées, les objectifs poursuivis ainsi que le plan de route adopté. Le quatrième chapitre détaille le déroulement technique des travaux, depuis la maintenance des modèles 3D jusqu'à l'extension progressive des configurateurs SQL à plusieurs gammes de produits.
+
+Le cinquième chapitre présente les résultats obtenus et les effets observés au sein de l'entreprise. Le sixième chapitre propose un bilan critique de l'alternance : compétences développées, difficultés rencontrées, contribution de la majeure, axes d'amélioration et projection professionnelle. Le septième chapitre constitue l'approfondissement scientifique attendu dans ce mémoire. Il prend du recul sur la question de l'interopérabilité entre configurateur et CAO, et formalise une piste de sécurisation fondée sur un contrat d'interface. Enfin, le mémoire se clôt par une conclusion générale, une bibliographie et des annexes.
