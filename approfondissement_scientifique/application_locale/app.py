@@ -19,6 +19,7 @@ import streamlit as st
 
 APP_DIR = Path(__file__).resolve().parent
 RACINE = APP_DIR.parent
+PROJET_DIR = RACINE.parent
 sys.path.insert(0, str(RACINE))
 
 import re  # noqa: E402
@@ -41,6 +42,7 @@ from generer_excel import (  # noqa: E402
 
 CONTRAT_DIR = RACINE / "contrat"
 DATA_DIR = RACINE / "data"
+LOGO_SOUCHIER = PROJET_DIR / "logo_Souchier.jpg"
 
 CLASSES_RUPTURE = {
     "R1": "Source SQL ou cible CAO absente",
@@ -56,6 +58,15 @@ MAPPING_BOOLEEN = {
     '"true" (texte, type incorrect)': "true",
     '"false" (texte, type incorrect)': "false",
 }
+
+
+def afficher_entete():
+    col_logo, col_titre = st.columns([1, 5])
+    with col_logo:
+        if LOGO_SOUCHIER.exists():
+            st.image(str(LOGO_SOUCHIER), width=170)
+    with col_titre:
+        st.title("Validateur de contrat d'interface SQL ↔ CAO")
 
 
 def seeder_valeurs_par_defaut(contrat, valeurs_extraites):
@@ -491,6 +502,10 @@ def onglet_generer_depuis_pdf():
             st.table(lignes)
 
     st.header("4. Export")
+    if not lignes_modele and not mentions:
+        st.info("Aucune donnee exploitable detectee pour generer un classeur.")
+        return
+
     classeur = generer_classeur(reference_gamme, lignes_modele, mentions)
     buffer = io.BytesIO()
     classeur.save(buffer)
@@ -507,8 +522,9 @@ def onglet_generer_depuis_pdf():
 
 
 def main():
-    st.set_page_config(page_title="Validateur contrat SQL <-> CAO", layout="wide")
-    st.title("Validateur de contrat d'interface SQL ↔ CAO")
+    page_icon = str(LOGO_SOUCHIER) if LOGO_SOUCHIER.exists() else None
+    st.set_page_config(page_title="Validateur contrat SQL <-> CAO", page_icon=page_icon, layout="wide")
+    afficher_entete()
 
     onglet_contrat, onglet_gamme, onglet_generer = st.tabs([
         "Validation par contrat JSON",
